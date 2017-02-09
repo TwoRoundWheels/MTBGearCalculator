@@ -1,0 +1,26 @@
+.left-container {
+	background-color: red;
+	width: 50%;
+	left: 0;
+	position: absolute;
+}
+
+.right-container {
+	background-color: yellow;
+	width: 50%;
+	right: 0;
+	position: absolute;
+}
+
+.gears {
+	display: block;
+	position: relative;
+}
+
+.gear {
+	display: inline-block;
+	height: 50px;
+	width: 10px;
+	margin: 5px;
+	background-color: grey;
+}

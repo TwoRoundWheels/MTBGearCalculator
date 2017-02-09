@@ -1,31 +1,24 @@
 var React = require('react');
-
-var ulStyle = {
-	display: 'block',
-	position: 'relative'
-}
-
-var liStyle = {
-	height: 50,
-	width: 5,
-	backgroundColor: 'grey',
-	display: 'inline-block',
-	margin: 3
-}
+var GearSelectionForm = require('../components/GearSelectionForm');
 
 var Front = React.createClass({
 	getInitialState: function () {
-		return {sizeOfGears: [22, 32, 44]};
+		return {
+			sizeOfGears: [22, 32, 44],
+			numberOfGears: 3
+		};
 	},
 	render: function() {
-		var gearVisualisation = this.state.sizeOfGears.map(function(size, index) {
-			liStyle.height = size * 5;
-			return <li key={index} style={liStyle}>{size}</li>
+		var gears = this.state.sizeOfGears.map(function(size, index) {
+			return <li key={index} style={{height: size * 5}}className="gear">{size}</li>
 		});	
 		return (
-			<ul style={ulStyle}>
-				{gearVisualisation}
-			</ul>
+			<div>
+				<GearSelectionForm number={this.state.numberOfGears} sizes={this.state.sizeOfGears}/>
+				<ul className="gears">
+					{gears}
+				</ul>
+			</div>
 			);
 	} 
 });
