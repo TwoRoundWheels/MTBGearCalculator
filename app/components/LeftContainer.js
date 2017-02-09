@@ -1,5 +1,6 @@
 var React = require('react');
-var Front = require('../components/Front')
+var Front = require('../components/Front');
+var Rear  = require('../components/Rear');
 
 
 var LeftContainer = React.createClass({
@@ -7,6 +8,7 @@ var LeftContainer = React.createClass({
 		return (
 		<div className="left-container">
 			<Front />
+			<Rear />
 		</div>
 		)
 	}
