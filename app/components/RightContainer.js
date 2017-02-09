@@ -1,10 +1,11 @@
 var React = require('react');
+var Front = require('../components/Front');
 
 var RightContainer = React.createClass({
 	render: function () {
 		return (
 			<div className="right-container">
-				<h1>Hola</h1>
+				<p>Right side will go here</p>
 			</div>
 			)
 	}
