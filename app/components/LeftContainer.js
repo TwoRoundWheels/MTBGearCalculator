@@ -15,7 +15,6 @@ var LeftContainer = React.createClass({
 	},
 	handleTextChangeFront: function (e) {
 		//Slice tempArray to create a new copy, rather than a reference, to avoid modifying state directly.
-		console.log("FRONT RAN");
 		var tempArray = this.state.sizeOfGearsFront.slice();
 		tempArray[e.target.name] = e.target.value;
 		this.setState({sizeOfGearsFront: tempArray});
@@ -26,7 +25,6 @@ var LeftContainer = React.createClass({
 	},
 	handleTextChangeRear: function (e) {
 		//Slice to tempArray to create a new copy, rather than a reference, to avoid modifying state directly.
-		console.log("REAR RAN");
 		var tempArray = this.state.sizeOfGearsRear.slice();
 		tempArray[e.target.name] = e.target.value;
 		this.setState({sizeOfGearsRear: tempArray});
