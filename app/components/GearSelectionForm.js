@@ -1,6 +1,19 @@
 var React = require('react');
 
 var GearSelectionForm = React.createClass({
+	handleTextChange: function (e) {
+		var value = Number(e.target.value);
+		var index = Number(e.target.name);
+		var side = this.props.side;
+		var position = this.props.position
+		this.props.textChange(value, index, side, position);
+	},
+	handleRadioChange: function (e) {
+		var value = e.target.value;
+		var side = this.props.side;
+		var position = this.props.position;
+		this.props.radioChange(value, side, position);
+	},
 	render: function() {
 		var textInputs = [];
 		var radioButtons = [];
@@ -18,12 +31,12 @@ var GearSelectionForm = React.createClass({
 		}; 
 
 		for (var i = 0; i < this.props.number; i++) {
-			textInputs.push(<input key={i} name={i} type="text" value={this.props.sizes[i]} onChange={this.props.textChange} />);
+			textInputs.push(<input key={i} name={i} type="text" value={this.props.sizes[i]} onChange={this.handleTextChange} />);
 		};
 
 		return (
 			<div>
-			<form onChange={this.props.radioChange}>
+			<form onChange={this.handleRadioChange}>
 				<label>Number of gears:</label>
 				{radioButtons}
 			</form>
