@@ -24,7 +24,9 @@ var Rear = React.createClass({
 					textChange={this.props.handleTextChange} 
 					number={this.props.currentNumberOfGears} 
 					sizes={this.props.sizeOfGears}
-					defaultGears={this.defaultProps.defaultGearNumbers}/>
+					defaultGears={this.defaultProps.defaultGearNumbers}
+					position={this.props.position}
+					side={this.props.side}/>
 			</div>
 			);
 	} 

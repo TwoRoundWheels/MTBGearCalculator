@@ -36,16 +36,16 @@ var GearSelectionForm = React.createClass({
 
 		return (
 			<div>
-			<form onChange={this.handleRadioChange}>
-				<label>Number of gears:</label>
-				{radioButtons}
-			</form>
-			<form>
-				<p>
-					Gear Sizes: 
-					<span>{textInputs}</span>
-				</p>
-			</form>
+				<form onChange={this.handleRadioChange}>
+					<label>Number of gears:</label>
+					{radioButtons}
+				</form>
+				<form>
+					<p>
+						Gear Sizes: 
+						<span>{textInputs}</span>
+					</p>
+				</form>
 			</div>
 			);
 	}

@@ -5,51 +5,27 @@ var RatioChart = require('../components/RatioChart');
 
 
 var RightContainer = React.createClass({
-	getInitialState: function () {
-		return {
-			sizeOfGearsFront: [22, 32, 44],
-			currentNumberOfGearsFront: 3,
-			sizeOfGearsRear: [50, 42, 36, 32, 28, 24, 21, 18, 16, 14, 12, 10],
-			currentNumberOfGearsRear: 12
-		};
-	},
-	handleTextChangeFront: function (e) {
-		//Slice tempArray to create a new copy, rather than a reference, to avoid modifying state directly.
-		var tempArray = this.state.sizeOfGearsFront.slice();
-		tempArray[e.target.name] = e.target.value;
-		this.setState({sizeOfGearsFront: tempArray});
-	},
-	handleRadioChangeFront: function (e) {
-		var value = e.target.value;
-		this.setState({currentNumberOfGearsFront: value});
-	},
-	handleTextChangeRear: function (e) {
-		//Slice to tempArray to create a new copy, rather than a reference, to avoid modifying state directly.
-		var tempArray = this.state.sizeOfGearsRear.slice();
-		tempArray[e.target.name] = e.target.value;
-		this.setState({sizeOfGearsRear: tempArray});
-	},
-	handleRadioChangeRear: function (e) {
-		var value = e.target.value;
-		this.setState({currentNumberOfGearsRear: value});
-	},
 	render: function () {
 		return (
 		<div className="right-container">
-			<Front sizeOfGears = {this.state.sizeOfGearsFront}
-				   currentNumberOfGears = {this.state.currentNumberOfGearsFront}
-				   handleRadioChange = {this.handleRadioChangeFront}
-				   handleTextChange = {this.handleTextChangeFront}/>
+			<Front sizeOfGears = {this.props.sizeOfGearsFront}
+				   currentNumberOfGears = {this.props.currentNumberOfGearsFront}
+				   handleRadioChange = {this.props.handleRadioChange}
+				   handleTextChange = {this.props.handleTextChange}
+				   position = "Front"
+				   side = "Right" />
 
-			<Rear sizeOfGears = {this.state.sizeOfGearsRear}
-			      currentNumberOfGears = {this.state.currentNumberOfGearsRear}
-			      handleRadioChange = {this.handleRadioChangeRear}
-			      handleTextChange = {this.handleTextChangeRear}/>
+			<Rear sizeOfGears = {this.props.sizeOfGearsRear}
+			      currentNumberOfGears = {this.props.currentNumberOfGearsRear}
+			      handleRadioChange = {this.props.handleRadioChange}
+			      handleTextChange = {this.props.handleTextChange}
+			      position = "Rear"
+			      side = "Right" />
 
-			<RatioChart numberOfGearsFront = {this.state.currentNumberOfGearsFront}
-						numberOfGearsRear = {this.state.currentNumberOfGearsRear}
-						sizeOfGearsFront = {this.state.sizeOfGearsFront}
-						sizeOfGearsRear = {this.state.sizeOfGearsRear}/>
+			<RatioChart numberOfGearsFront = {this.props.currentNumberOfGearsFront}
+						numberOfGearsRear = {this.props.currentNumberOfGearsRear}
+						sizeOfGearsFront = {this.props.sizeOfGearsFront}
+						sizeOfGearsRear = {this.props.sizeOfGearsRear} />
 
 		</div>
 		)

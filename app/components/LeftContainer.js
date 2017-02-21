@@ -13,19 +13,19 @@ var LeftContainer = React.createClass({
 				   handleRadioChange = {this.props.handleRadioChange}
 				   handleTextChange = {this.props.handleTextChange}
 				   position = "Front"
-				   side = "Left"/>
+				   side = "Left" />
 
 			<Rear sizeOfGears = {this.props.sizeOfGearsRear}
 			      currentNumberOfGears = {this.props.currentNumberOfGearsRear}
-			      handleRadioChange = {this.props.handleRadioChangeRear}
-			      handleTextChange = {this.props.handleTextChangeRear}
+			      handleRadioChange = {this.props.handleRadioChange}
+			      handleTextChange = {this.props.handleTextChange}
 			      position = "Rear"
-			      side = "Left"/>
+			      side = "Left" />
 
 			<RatioChart numberOfGearsFront = {this.props.currentNumberOfGearsFront}
 						numberOfGearsRear = {this.props.currentNumberOfGearsRear}
 						sizeOfGearsFront = {this.props.sizeOfGearsFront}
-						sizeOfGearsRear = {this.props.sizeOfGearsRear}/>
+						sizeOfGearsRear = {this.props.sizeOfGearsRear} />
 
 		</div>
 		)

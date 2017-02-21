@@ -28,39 +28,49 @@ var App = React.createClass({
 		//Use Update from react-addons-update to update properties, then use setState.  Using setState 
 		//alone would throw an error updating nested objects, or would erase the other object properties
 		//when using setState({left {sizeOfGears: tempArray}}).
-		if (side == "Left" && position == "Front") {
+		if (side === "Left" && position === "Front") {
 			var tempArray = this.state.left.sizeOfGearsFront.slice();
 			tempArray[index] = value;
 			var newState = Update(this.state.left, {sizeOfGearsFront: {$set: tempArray}});
 			this.setState({left: newState});
+		} else if (side === "Left" && position === "Rear") {
+			var tempArray = this.state.left.sizeOfGearsRear.slice();
+			tempArray[index] = value;
+			var newState = Update(this.state.left, {sizeOfGearsRear: {$set: tempArray}});
+			this.setState({left: newState});
+		} else if (side === "Right" && position === "Front") {
+			var tempArray = this.state.right.sizeOfGearsFront.slice();
+			tempArray[index] = value;
+			var newState = Update(this.state.right, {sizeOfGearsFront: {$set: tempArray}});
+			this.setState({right: newState});
+		} else if (side === "Right" && position === "Rear") {
+			var tempArray = this.state.right.sizeOfGearsRear.slice();
+			tempArray[index] = value;
+			var newState = Update(this.state.right, {sizeOfGearsRear: {$set: tempArray}});
+			this.setState({right: newState});
 		} else {
-			console.log("Something Else Happened.");
+			console.warn("Failed to Update State.");
 		}
-		// OLD WAY
-		// var tempArray = this.state.sizeOfGearsFront.slice();
-		// tempArray[e.target.name] = e.target.value;
-		// this.setState({sizeOfGearsFront: tempArray});
 	},
 	handleRadioChange: function (value, side, position) {
-		if (side == "Left" && position == "Front") {
+		//Use Update from react-addons-update to update properties, then use setState.  Using setState 
+		//alone would throw an error updating nested objects, or would erase the other object properties
+		//when using setState({left {sizeOfGears: tempArray}}).
+		if (side === "Left" && position === "Front") {
 			var newState = Update(this.state.left, {currentNumberOfGearsFront: {$set: value}});
 			this.setState({left: newState});
+		} else if (side === "Left" && position === "Rear") {
+			var newState = Update(this.state.left, {currentNumberOfGearsRear: {$set: value}});
+			this.setState({left: newState});
+		} else if (side === "Right" && position === "Front") {
+			var newState = Update(this.state.right, {currentNumberOfGearsFront: {$set: value}});
+			this.setState({right: newState});
+		} else if (side === "Right" && position === "Rear") {
+			var newState = Update(this.state.right, {currentNumberOfGearsRear: {$set: value}});
+			this.setState({right: newState});
 		} else {
-			console.log("Something Else happened in the radio")
+			console.warn("Failed to Update State.")
 		}
-		// OLD WAY
-		// var value = e.target.value;
-		// this.setState({currentNumberOfGearsFront: value});
-	},
-	handleTextChangeRear: function (e) {
-		//Slice to tempArray to create a new copy, rather than a reference, to avoid modifying state directly.
-		var tempArray = this.state.sizeOfGearsRear.slice();
-		tempArray[e.target.name] = e.target.value;
-		this.setState({sizeOfGearsRear: tempArray});
-	},
-	handleRadioChangeRear: function (e) {
-		var value = e.target.value;
-		this.setState({currentNumberOfGearsRear: value});
 	},
 	render: function () {
 		return (
@@ -71,7 +81,13 @@ var App = React.createClass({
 				   currentNumberOfGearsRear = {this.state.left.currentNumberOfGearsRear}
 				   handleRadioChange = {this.handleRadioChange}
 				   handleTextChange = {this.handleTextChange} />
-			<RightContainer />
+			
+			<RightContainer sizeOfGearsFront = {this.state.right.sizeOfGearsFront}
+				   currentNumberOfGearsFront = {this.state.right.currentNumberOfGearsFront}
+				   sizeOfGearsRear = {this.state.right.sizeOfGearsRear}
+				   currentNumberOfGearsRear = {this.state.right.currentNumberOfGearsRear}
+				   handleRadioChange = {this.handleRadioChange}
+				   handleTextChange = {this.handleTextChange} />
 		</div>
 		);
 	}
