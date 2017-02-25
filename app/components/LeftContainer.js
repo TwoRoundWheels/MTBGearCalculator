@@ -25,7 +25,11 @@ var LeftContainer = React.createClass({
 			<RatioChart numberOfGearsFront = {this.props.currentNumberOfGearsFront}
 						numberOfGearsRear = {this.props.currentNumberOfGearsRear}
 						sizeOfGearsFront = {this.props.sizeOfGearsFront}
-						sizeOfGearsRear = {this.props.sizeOfGearsRear} />
+						sizeOfGearsRear = {this.props.sizeOfGearsRear} 
+						sizeOfGearsOnOppositeFront = {this.props.sizeOfGearsOnOppositeFront}
+				   		sizeOfGearsOnOppositeRear = {this.props.sizeOfGearsOnOppositeRear}
+				   		currentNumberOfGearsOppositeFront = {this.props.currentNumberOfGearsOppositeFront}
+				   		currentNumberOfGearsOppositeRear = {this.props.currentNumberOfGearsOppositeRear} />
 
 		</div>
 		)

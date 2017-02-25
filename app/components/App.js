@@ -80,14 +80,22 @@ var App = React.createClass({
 				   sizeOfGearsRear = {this.state.left.sizeOfGearsRear}
 				   currentNumberOfGearsRear = {this.state.left.currentNumberOfGearsRear}
 				   handleRadioChange = {this.handleRadioChange}
-				   handleTextChange = {this.handleTextChange} />
+				   handleTextChange = {this.handleTextChange} 
+				   sizeOfGearsOnOppositeFront = {this.state.right.sizeOfGearsFront}
+				   sizeOfGearsOnOppositeRear = {this.state.right.sizeOfGearsRear} 
+				   currentNumberOfGearsOppositeFront = {this.state.right.currentNumberOfGearsFront}
+				   currentNumberOfGearsOppositeRear = {this.state.right.currentNumberOfGearsRear} />
 			
 			<RightContainer sizeOfGearsFront = {this.state.right.sizeOfGearsFront}
 				   currentNumberOfGearsFront = {this.state.right.currentNumberOfGearsFront}
 				   sizeOfGearsRear = {this.state.right.sizeOfGearsRear}
 				   currentNumberOfGearsRear = {this.state.right.currentNumberOfGearsRear}
 				   handleRadioChange = {this.handleRadioChange}
-				   handleTextChange = {this.handleTextChange} />
+				   handleTextChange = {this.handleTextChange} 
+				   sizeOfGearsOnOppositeFront = {this.state.left.sizeOfGearsFront}
+				   sizeOfGearsOnOppositeRear = {this.state.left.sizeOfGearsRear}
+				   currentNumberOfGearsOppositeFront = {this.state.left.currentNumberOfGearsFront}
+				   currentNumberOfGearsOppositeRear = {this.state.left.currentNumberOfGearsRear}/>
 		</div>
 		);
 	}
