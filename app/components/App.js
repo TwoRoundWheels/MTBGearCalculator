@@ -14,12 +14,16 @@ var App = React.createClass({
 				left:  {sizeOfGearsFront: [22, 32, 44],
 						currentNumberOfGearsFront: 3,
 						sizeOfGearsRear: [50, 42, 36, 32, 28, 24, 21, 18, 16, 14, 12, 10],
-						currentNumberOfGearsRear: 12},
+						currentNumberOfGearsRear: 12,
+						selectedGearFront: null,
+						selectedGearRear: null},
 
 				right: {sizeOfGearsFront: [22, 32, 44],
 						currentNumberOfGearsFront: 3,
 						sizeOfGearsRear: [50, 42, 36, 32, 28, 24, 21, 18, 16, 14, 12, 10],
-						currentNumberOfGearsRear: 12}
+						currentNumberOfGearsRear: 12,
+						selectedGearFront: null,
+						selectedGearRear: null}
 				}
 		);
 	},
@@ -69,7 +73,24 @@ var App = React.createClass({
 			var newState = Update(this.state.right, {currentNumberOfGearsRear: {$set: value}});
 			this.setState({right: newState});
 		} else {
-			console.warn("Failed to Update State.")
+			console.warn("Failed to Update State.");
+		}
+	},
+	handleSelectedGearChange: function (side, position, selected) {
+		if (side === "Left" && position === "Front") {
+			var newState = Update(this.state.left, {selectedGearFront: {$set: selected}});
+			this.setState({left: newState});
+		} else if (side === "Left" && position ==="Rear") {
+			var newState = Update(this.state.left, {selectedGearRear: {$set: selected}});
+			this.setState({left: newState});
+		} else if (side === "Right" && position === "Front") {
+			var newState = Update(this.state.right, {selectedGearFront: {$set: selected}});
+			this.setState({right: newState});
+		} else if (side === "Right" && position === "Rear") {
+			var newState = Update(this.state.right, {selectedGearRear: {$set: selected}});
+			this.setState({right: newState});
+		} else {
+			console.warn("Failed to Update State of Selected Gear.");
 		}
 	},
 	render: function () {
@@ -84,7 +105,10 @@ var App = React.createClass({
 				   sizeOfGearsOnOppositeFront = {this.state.right.sizeOfGearsFront}
 				   sizeOfGearsOnOppositeRear = {this.state.right.sizeOfGearsRear} 
 				   currentNumberOfGearsOppositeFront = {this.state.right.currentNumberOfGearsFront}
-				   currentNumberOfGearsOppositeRear = {this.state.right.currentNumberOfGearsRear} />
+				   currentNumberOfGearsOppositeRear = {this.state.right.currentNumberOfGearsRear} 
+				   selectedGearFront = {this.state.left.selectedGearFront} 
+				   selectedGearRear = {this.state.left.selectedGearRear}
+				   handleSelectedGearChange = {this.handleSelectedGearChange} />
 			
 			<RightContainer sizeOfGearsFront = {this.state.right.sizeOfGearsFront}
 				   currentNumberOfGearsFront = {this.state.right.currentNumberOfGearsFront}
@@ -95,7 +119,10 @@ var App = React.createClass({
 				   sizeOfGearsOnOppositeFront = {this.state.left.sizeOfGearsFront}
 				   sizeOfGearsOnOppositeRear = {this.state.left.sizeOfGearsRear}
 				   currentNumberOfGearsOppositeFront = {this.state.left.currentNumberOfGearsFront}
-				   currentNumberOfGearsOppositeRear = {this.state.left.currentNumberOfGearsRear}/>
+				   currentNumberOfGearsOppositeRear = {this.state.left.currentNumberOfGearsRear}
+				   selectedGearFront = {this.state.right.selectedGearFront} 
+				   selectedGearRear = {this.state.right.selectedGearRear}
+				   handleSelectedGearChange = {this.handleSelectedGearChange} />
 		</div>
 		);
 	}

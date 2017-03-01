@@ -5,15 +5,32 @@ var Rear = React.createClass({
 	defaultProps: {
 		defaultGearNumbers: [1, 7, 8, 9, 10, 11, 12]
 	},
+	handleClick: function (e) {
+		var side = this.props.side;
+		var position = this.props.position;
+		if (e.target === this.props.selectedGearRear) {
+			e.target.classList.toggle("selectedGear");
+			var selected = null;
+			this.props.handleSelectedGearChange(side, position, selected);
+		} else if (this.props.selectedGearRear === null) {
+			e.target.classList.toggle("selectedGear");
+			var selected = e.target;
+			this.props.handleSelectedGearChange(side, position, selected);
+		} else {
+			this.props.selectedGearRear.classList.toggle("selectedGear");
+			e.target.classList.toggle("selectedGear");
+			var selected = e.target;
+			this.props.handleSelectedGearChange(side, position, selected);
+		}
+	},
 	render: function() {
 		var HEIGHTMODIFIER = 5;
 		var numberOfGears = this.props.currentNumberOfGears;
 		var gears = this.props.sizeOfGears.map(function(size, index) {
 			if(index < numberOfGears) {
-				return <li key={index} style={{height: size * HEIGHTMODIFIER}} className="gear">{size}</li>
-			}
-			
-		});	
+				return <li key={index} style={{height: size * HEIGHTMODIFIER}} className="gear" onClick={this.handleClick}>{size}</li>
+			}	
+		}, this);	
 		return (
 			<div>
 				<ul className="gears">
