@@ -1,0 +1,1 @@
+A mountain bike gear ratio calculator made with React.js that accepts various wheel sizes and gear sizes and calculates and compares the ratios.  Current project and very much a work in progress at this point. 
