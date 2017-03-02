@@ -5,9 +5,34 @@ var RatioChart = React.createClass({
 		return {highlight: true};
 	},
 	handleClick: function (e) {
-		//Set value to Boolean true/false value, rather than the string true/false value returned by e.target.value
-		value = (e.target.value == 'true');
-		this.setState({highlight: value});
+		if (e.target.name === "highlight") {
+			//Set value to Boolean true/false value, rather than the string true/false value returned by e.target.value
+			value = (e.target.value == 'true');
+			this.setState({highlight: value});
+		} else if (e.target.name === "show-ratios") {
+			//Set value to Boolean true/false value, rather than the string true/false value returned by e.target.value
+			value = (e.target.value == 'true');
+			this.props.handleShowRatioChange(value);
+		} else {
+			console.warn("Failed to update state of Ratio Chart radio buttons");
+		}
+	},
+	calculateSmallestRatio: function (oppositeFront, oppositeRear, oppositeTireSize) {
+		var ratio = oppositeFront[0] / oppositeRear[0];
+		if (this.props.showRatios === true) {
+			return ratio;
+		} else {
+			return ratio * oppositeTireSize;
+		}
+	},
+	calculateLargestRatio: function (oppositeFront, oppositeRear, oppositeTireSize) {
+		var ratio = oppositeFront / oppositeRear;
+		if (this.props.showRatios === true) {
+			return ratio;
+		} else {
+			return ratio * oppositeTireSize;
+		}
+		
 	},
 	render: function () {
 		var rowLabels = ["First: ", "Second: ", "Third: "];
@@ -18,15 +43,24 @@ var RatioChart = React.createClass({
 		var numberOfGearsRearOnOtherSide = this.props.currentNumberOfGearsOppositeRear;
 		var oppositeFront = this.props.sizeOfGearsOnOppositeFront;
 		var oppositeRear = this.props.sizeOfGearsOnOppositeRear;
-		var smallestRatioOnOtherSide = oppositeFront[0] / oppositeRear[0];	
-		var largestRatioOnOtherSide = oppositeFront[numberOfGearsFrontOnOtherSide - 1] / oppositeRear[numberOfGearsRearOnOtherSide- 1];
+		var oppositeTireSize = this.props.oppositeTireSize;
+		var tireSize = this.props.tireSize;
+		var smallestRatioOnOtherSide = this.calculateSmallestRatio(oppositeFront, oppositeRear, oppositeTireSize);	
+		var largestRatioOnOtherSide = this.calculateLargestRatio(oppositeFront[numberOfGearsFrontOnOtherSide - 1], oppositeRear[numberOfGearsRearOnOtherSide - 1], oppositeTireSize);
 		var highlight = this.state.highlight;
+		var showRatios = this.props.showRatios;
+		var side = this.props.side;
+		
 		var ratioCollection = this.props.sizeOfGearsFront.map(function(size, index) {
 			var ratios = [];
 			if (index < numberOfGearsFront) {
 				for (var i = 0; i < gears.length; i++) {
 					if (i < numberOfGearsRear) {
-						var ratio = size / gears[i];
+						if (showRatios === true) {
+							var ratio = size / gears[i];
+						} else {
+							var ratio = size / gears[i] * tireSize;
+						}
 						if (ratio >= smallestRatioOnOtherSide && ratio <= largestRatioOnOtherSide && highlight === true) {
 							ratios[i] = <td key={i} className="sharedRatio">{ratio.toFixed(2)}</td>
 						} else {
@@ -44,7 +78,7 @@ var RatioChart = React.createClass({
 				headings[i] = <th key={i}>{i}</th>
 			}
 			return headings;
-		}	
+		}
 		return (
 			<div>
 				<table>
@@ -69,6 +103,24 @@ var RatioChart = React.createClass({
 							   value={false} 
 							   defaultChecked={false}
 							   onClick={this.handleClick} />
+					</label>		
+				</form>
+				<form>
+					<label>
+						Show Gear Ratios
+						<input type="radio" 
+							   name="show-ratios" 
+							   value={true} 
+							   checked={this.props.showRatios ? true : false}
+							   onChange={this.handleClick} />
+					</label>
+					<label>
+						Show Gear Inches
+						<input type="radio" 
+							   name="show-ratios" 
+							   value={false} 
+							   checked={this.props.showRatios ? false : true}
+							   onChange={this.handleClick} />
 					</label>		
 				</form>
 			</div>

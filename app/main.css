@@ -32,3 +32,22 @@
 .selectedGear {
 	background-color: green;
 }
+
+.tire {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+	width: 10px;
+	height: 200px;
+	background-color: black;
+}
+
+.tire-container {
+	position: absolute;
+	right: 20%;
+	bottom: 40%;
+}
+
+.tire-form {
+	background-color: blue;
+}

@@ -23,8 +23,14 @@ var Rear = React.createClass({
 			this.props.handleSelectedGearChange(side, position, selected);
 		}
 	},
+	handleRadioChange: function (e) {
+		var side = this.props.side;
+		var value = e.target.value;
+		this.props.handleTireSizeChange(side, value);
+	},
 	render: function() {
 		var HEIGHTMODIFIER = 5;
+		var TIREHEIGHTMODIFIER = 10;
 		var numberOfGears = this.props.currentNumberOfGears;
 		var gears = this.props.sizeOfGears.map(function(size, index) {
 			if(index < numberOfGears) {
@@ -36,6 +42,23 @@ var Rear = React.createClass({
 				<ul className="gears">
 					{gears}
 				</ul>
+				<div className="tire-container">
+					<div className="tire" style={{height: this.props.tireSize * TIREHEIGHTMODIFIER}}>
+						
+					</div>
+					<form className="tire-form" onChange={this.handleRadioChange} >
+						<label>Tire Size: </label>
+							<label>26
+								<input type="radio" name="tire-size" value={26} defaultChecked={true}/>
+							</label>
+							<label>27.5
+								<input type="radio" name="tire-size" value={27.5} defaultChecked={false}/>
+							</label>
+							<label>29
+								<input type="radio" name="tire-size" value={29} defaultChecked={false}/>
+							</label>	
+						</form>
+				</div>
 				<GearSelectionForm 
 					radioChange={this.props.handleRadioChange} 
 					textChange={this.props.handleTextChange} 
