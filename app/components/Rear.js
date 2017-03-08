@@ -3,7 +3,8 @@ var GearSelectionForm = require('../components/GearSelectionForm');
 
 var Rear = React.createClass({
 	defaultProps: {
-		defaultGearNumbers: [1, 7, 8, 9, 10, 11, 12]
+		defaultGearNumbers: [1, 7, 8, 9, 10, 11, 12],
+		similarRatioClasses: ["similar-ratio1", "similar-ratio2", "similar-ratio3", "similar-ratio4"]
 	},
 	handleClick: function (e) {
 		var side = this.props.side;
@@ -31,11 +32,25 @@ var Rear = React.createClass({
 	render: function() {
 		var HEIGHTMODIFIER = 5;
 		var TIREHEIGHTMODIFIER = 10;
+		var gearsToHighlight = this.props.gearsToHighlight;
+		var side = this.props.side;
 		var numberOfGears = this.props.currentNumberOfGears;
+		var classes = this.defaultProps.similarRatioClasses;
 		var gears = this.props.sizeOfGears.map(function(size, index) {
-			if(index < numberOfGears) {
-				return <li key={index} style={{height: size * HEIGHTMODIFIER}} className="gear" onClick={this.handleClick}>{size}</li>
-			}	
+			if (side === "Right" && gearsToHighlight.length > 0) {
+					console.log(index);
+					for (var i = 0; i < gearsToHighlight.length; i++) {
+						highlightedGear = gearsToHighlight[i][1];
+						console.log(highlightedGear);
+						if (index === gearsToHighlight[i][1]) {
+							console.log("matched" + gearsToHighlight[i][1])
+							return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className={"gear " + classes[i]} onClick={this.handleClick}>{size}</li>
+						} 
+					}
+					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear" onClick={this.handleClick}>{size}</li>
+				} else {
+					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear" onClick={this.handleClick}>{size}</li>
+				}	
 		}, this);	
 		return (
 			<div>

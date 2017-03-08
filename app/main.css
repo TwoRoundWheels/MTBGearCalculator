@@ -33,6 +33,25 @@
 	background-color: green;
 }
 
+.similar-ratio1 {
+	background-color: yellow;
+}
+
+.similar-ratio2 {
+	background-color: yellow;
+	opacity: .8;
+}
+
+.similar-ratio3 {
+	background-color: yellow;
+	opacity: .6;
+}
+
+.similar-ratio4 {
+	background-color: yellow;
+	opacity: .4;
+}
+
 .tire {
 	margin-left: auto;
 	margin-right: auto;

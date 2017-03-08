@@ -17,6 +17,8 @@ var App = React.createClass({
 						currentNumberOfGearsRear: 12,
 						selectedGearFront: null,
 						selectedGearRear: null,
+						selectedGearFrontValue: null,
+						selectedGearRearValue: null,
 						tireSize: 26},
 
 				right: {sizeOfGearsFront: [22, 32, 44],
@@ -25,6 +27,8 @@ var App = React.createClass({
 						currentNumberOfGearsRear: 12,
 						selectedGearFront: null,
 						selectedGearRear: null,
+						selectedGearFrontValue: null,
+						selectedGearRearValue: null,
 						tireSize: 26},
 				showRatios: true
 				}
@@ -80,17 +84,22 @@ var App = React.createClass({
 		}
 	},
 	handleSelectedGearChange: function (side, position, selected) {
+		var value = selected != null ? selected.value : null
 		if (side === "Left" && position === "Front") {
-			var newState = Update(this.state.left, {selectedGearFront: {$set: selected}});
+			var newState = Update(this.state.left, {selectedGearFront: {$set: selected}, 
+													selectedGearFrontValue: {$set: value}});
 			this.setState({left: newState});
 		} else if (side === "Left" && position ==="Rear") {
-			var newState = Update(this.state.left, {selectedGearRear: {$set: selected}});
+			var newState = Update(this.state.left, {selectedGearRear: {$set: selected},
+													selectedGearRearValue: {$set: value}});
 			this.setState({left: newState});
 		} else if (side === "Right" && position === "Front") {
-			var newState = Update(this.state.right, {selectedGearFront: {$set: selected}});
+			var newState = Update(this.state.right, {selectedGearFront: {$set: selected},
+													 selectedGearFrontValue: {$set: value}});
 			this.setState({right: newState});
 		} else if (side === "Right" && position === "Rear") {
-			var newState = Update(this.state.right, {selectedGearRear: {$set: selected}});
+			var newState = Update(this.state.right, {selectedGearRear: {$set: selected},
+													 selectedGearRearValue: {$set: value}});
 			this.setState({right: newState});
 		} else {
 			console.warn("Failed to Update State of Selected Gear.");
@@ -130,7 +139,9 @@ var App = React.createClass({
 				   oppositeTireSize = {this.state.right.tireSize}
 				   handleTireSizeChange = {this.handleTireSizeChange} 
 				   showRatios = {this.state.showRatios}
-				   handleShowRatioChange = {this.handleShowRatioChange} />
+				   handleShowRatioChange = {this.handleShowRatioChange}
+				   oppositeSelectedFrontValue = {this.state.right.selectedGearFrontValue}
+				   oppositeSelectedRearValue = {this.state.right.selectedGearRearValue} />
 			
 			<RightContainer sizeOfGearsFront = {this.state.right.sizeOfGearsFront}
 				   currentNumberOfGearsFront = {this.state.right.currentNumberOfGearsFront}
@@ -149,7 +160,9 @@ var App = React.createClass({
 				   oppositeTireSize = {this.state.left.tireSize}
 				   handleTireSizeChange = {this.handleTireSizeChange}
 				   showRatios = {this.state.showRatios}
-				   handleShowRatioChange = {this.handleShowRatioChange} />
+				   handleShowRatioChange = {this.handleShowRatioChange}
+				   oppositeSelectedFrontValue = {this.state.left.selectedGearFrontValue}
+				   oppositeSelectedRearValue = {this.state.left.selectedGearRearValue} />
 		</div>
 		);
 	}

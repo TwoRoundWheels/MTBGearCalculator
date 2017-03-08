@@ -50,7 +50,7 @@ var RatioChart = React.createClass({
 		var highlight = this.state.highlight;
 		var showRatios = this.props.showRatios;
 		var side = this.props.side;
-		
+		var oppositeRatio = this.props.oppositeSelectedFrontValue / this.props.oppositeSelectedRearValue;
 		var ratioCollection = this.props.sizeOfGearsFront.map(function(size, index) {
 			var ratios = [];
 			if (index < numberOfGearsFront) {
@@ -63,6 +63,15 @@ var RatioChart = React.createClass({
 						}
 						if (ratio >= smallestRatioOnOtherSide && ratio <= largestRatioOnOtherSide && highlight === true) {
 							ratios[i] = <td key={i} className="sharedRatio">{ratio.toFixed(2)}</td>
+							if (showRatios === true) {
+								if (Math.abs(ratio - oppositeRatio) < .1) {
+									ratios[i] = <td key={i} className="similarRatio">{ratio.toFixed(2)}</td>
+								}
+							} else {
+								if (Math.abs(ratio - (oppositeRatio * oppositeTireSize)) < 1) {
+									ratios[i] = <td key={i} className="similarRatio">{ratio.toFixed(2)}</td>
+								}
+							}
 						} else {
 							ratios[i] = <td key={i}>{ratio.toFixed(2)}</td>
 						}

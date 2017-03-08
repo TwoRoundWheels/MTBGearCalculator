@@ -26,11 +26,24 @@ var Front = React.createClass({
 	render: function() {
 		var HEIGHTMODIFIER = 5;
 		var numberOfGears = this.props.currentNumberOfGears;
+		var gearsToHighlight = this.props.gearsToHighlight;
+		var side = this.props.side;
 		var gears = this.props.sizeOfGears.map(function(size, index) {
 			if(index < numberOfGears) {
-				return <li key={index} style={{height: size * HEIGHTMODIFIER}} className="gear" onClick={this.handleClick}>{size}</li>
+				if (side === "Right" && gearsToHighlight.length > 0) {
+					for (var i = 0; i < gearsToHighlight.length; i++) {
+						if (index === gearsToHighlight[i][0]) {
+							return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear similar-ratio1" onClick={this.handleClick}>{size}</li>
+						} else {
+							return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear" onClick={this.handleClick}>{size}</li>
+						}
+					}
+				} else {
+					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear" onClick={this.handleClick}>{size}</li>
+				}	
 			}	
-		}, this);	
+		}, this);
+		
 		return (
 			<div>
 				<GearSelectionForm 

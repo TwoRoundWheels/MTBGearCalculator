@@ -5,6 +5,34 @@ var RatioChart = require('../components/RatioChart');
 
 
 var RightContainer = React.createClass({
+	calculateGearsToHighlight: function() {
+		var leftFront = this.props.oppositeSelectedFrontValue;
+		var leftRear = this.props.oppositeSelectedRearValue;
+		var sizeOfGearsFront =  this.props.sizeOfGearsFront;
+		var sizeOfGearsRear =  this.props.sizeOfGearsRear;
+		var tireSize = this.props.tireSize;
+		var oppositeTireSize = this.props.oppositeTireSize;
+		var gearsToHighlight = [];
+		var ratio = null;
+		var leftRatio = this.props.showRatios ? leftFront / leftRear : leftFront / leftRear * oppositeTireSize;
+		var limitValue = this.props.showRatios ? .1 : 1;
+		//STILL STUCK TRYING TO FIGURE OUT HOW TO HIGHLIGHT GEARS
+		
+		for (i = 0; i < this.props.currentNumberOfGearsFront; i++) {
+			for(j = 0; j < this.props.currentNumberOfGearsRear; j++) {
+				if (this.props.showRatios === true) {
+					ratio = sizeOfGearsFront[i] / sizeOfGearsRear[j];
+
+				} else {
+					ratio = sizeOfGearsFront[i] / sizeOfGearsRear[j] * tireSize;
+				}
+				if (Math.abs(ratio - leftRatio) < limitValue) {
+					gearsToHighlight.push([i, j]);
+				} 
+			}
+		}
+		return gearsToHighlight;
+	},
 	render: function () {
 		return (
 		<div className="right-container">
@@ -15,7 +43,8 @@ var RightContainer = React.createClass({
 				   position = "Front"
 				   side = "Right"
 				   selectedGearFront = {this.props.selectedGearFront}
-				   handleSelectedGearChange = {this.props.handleSelectedGearChange} />
+				   handleSelectedGearChange = {this.props.handleSelectedGearChange}
+				   gearsToHighlight = {this.calculateGearsToHighlight()} />
 
 			<Rear sizeOfGears = {this.props.sizeOfGearsRear}
 			      currentNumberOfGears = {this.props.currentNumberOfGearsRear}
@@ -26,7 +55,8 @@ var RightContainer = React.createClass({
 			      selectedGearRear = {this.props.selectedGearRear}
 			      handleSelectedGearChange = {this.props.handleSelectedGearChange}
 			      tireSize = {this.props.tireSize}
-			      handleTireSizeChange = {this.props.handleTireSizeChange} />
+			      handleTireSizeChange = {this.props.handleTireSizeChange} 
+			      gearsToHighlight = {this.calculateGearsToHighlight()} />
 
 			<RatioChart numberOfGearsFront = {this.props.currentNumberOfGearsFront}
 						numberOfGearsRear = {this.props.currentNumberOfGearsRear}
@@ -40,7 +70,9 @@ var RightContainer = React.createClass({
 				   		oppositeTireSize = {this.props.oppositeTireSize}
 				   		showRatios = {this.props.showRatios}
 				   		handleShowRatioChange = {this.props.handleShowRatioChange}
-				   		side = "Right" />
+				   		side = "Right"
+				   		oppositeSelectedFrontValue = {this.props.oppositeSelectedFrontValue}
+				   		oppositeSelectedRearValue = {this.props.oppositeSelectedRearValue} />
 
 		</div>
 		)
