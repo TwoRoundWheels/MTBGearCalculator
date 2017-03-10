@@ -25,10 +25,6 @@ var App = React.createClass({
 						currentNumberOfGearsFront: 3,
 						sizeOfGearsRear: [50, 42, 36, 32, 28, 24, 21, 18, 16, 14, 12, 10],
 						currentNumberOfGearsRear: 12,
-						selectedGearFront: null,
-						selectedGearRear: null,
-						selectedGearFrontValue: null,
-						selectedGearRearValue: null,
 						tireSize: 26},
 				showRatios: true
 				}
@@ -140,8 +136,8 @@ var App = React.createClass({
 				   handleTireSizeChange = {this.handleTireSizeChange} 
 				   showRatios = {this.state.showRatios}
 				   handleShowRatioChange = {this.handleShowRatioChange}
-				   oppositeSelectedFrontValue = {this.state.right.selectedGearFrontValue}
-				   oppositeSelectedRearValue = {this.state.right.selectedGearRearValue} />
+				   selectedFrontValue = {this.state.left.selectedGearFrontValue}
+				   selectedRearValue = {this.state.left.selectedGearRearValue} />
 			
 			<RightContainer sizeOfGearsFront = {this.state.right.sizeOfGearsFront}
 				   currentNumberOfGearsFront = {this.state.right.currentNumberOfGearsFront}

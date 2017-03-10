@@ -9,24 +9,26 @@ var Rear = React.createClass({
 	handleClick: function (e) {
 		var side = this.props.side;
 		var position = this.props.position;
-		if (e.target === this.props.selectedGearRear) {
-			e.target.classList.toggle("selectedGear");
-			var selected = null;
-			this.props.handleSelectedGearChange(side, position, selected);
-		} else if (this.props.selectedGearRear === null) {
-			e.target.classList.toggle("selectedGear");
-			var selected = e.target;
-			this.props.handleSelectedGearChange(side, position, selected);
-		} else {
-			this.props.selectedGearRear.classList.toggle("selectedGear");
-			e.target.classList.toggle("selectedGear");
-			var selected = e.target;
-			this.props.handleSelectedGearChange(side, position, selected);
+		if (side === "Left") {
+			if (e.target === this.props.selectedGearRear) {
+				e.target.classList.toggle("selectedGear");
+				var selected = null;
+				this.props.handleSelectedGearChange(side, position, selected);
+			} else if (this.props.selectedGearRear === null) {
+				e.target.classList.toggle("selectedGear");
+				var selected = e.target;
+				this.props.handleSelectedGearChange(side, position, selected);
+			} else {
+				this.props.selectedGearRear.classList.toggle("selectedGear");
+				e.target.classList.toggle("selectedGear");
+				var selected = e.target;
+				this.props.handleSelectedGearChange(side, position, selected);
+			}
 		}
 	},
 	handleRadioChange: function (e) {
 		var side = this.props.side;
-		var value = e.target.value;
+		var value = Number(e.target.value);
 		this.props.handleTireSizeChange(side, value);
 	},
 	render: function() {
@@ -37,13 +39,10 @@ var Rear = React.createClass({
 		var numberOfGears = this.props.currentNumberOfGears;
 		var classes = this.defaultProps.similarRatioClasses;
 		var gears = this.props.sizeOfGears.map(function(size, index) {
-			if (side === "Right" && gearsToHighlight.length > 0) {
-					console.log(index);
+			if (index < numberOfGears) {
+				if (side === "Right" && gearsToHighlight.length > 0) {
 					for (var i = 0; i < gearsToHighlight.length; i++) {
-						highlightedGear = gearsToHighlight[i][1];
-						console.log(highlightedGear);
 						if (index === gearsToHighlight[i][1]) {
-							console.log("matched" + gearsToHighlight[i][1])
 							return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className={"gear " + classes[i]} onClick={this.handleClick}>{size}</li>
 						} 
 					}
@@ -51,6 +50,7 @@ var Rear = React.createClass({
 				} else {
 					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear" onClick={this.handleClick}>{size}</li>
 				}	
+			}
 		}, this);	
 		return (
 			<div>

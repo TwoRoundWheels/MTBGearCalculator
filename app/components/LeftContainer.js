@@ -5,6 +5,27 @@ var RatioChart = require('../components/RatioChart');
 
 
 var LeftContainer = React.createClass({
+	propTypes: {sizeOfGearsFront: React.PropTypes.arrayOf(React.PropTypes.number),
+			   currentNumberOfGearsFront: React.PropTypes.number,
+			   sizeOfGearsRear: React.PropTypes.arrayOf(React.PropTypes.number),
+			   currentNumberOfGearsRear: React.PropTypes.number,
+			   handleRadioChange: React.PropTypes.func,
+			   handleTextChange: React.PropTypes.func, 
+			   sizeOfGearsOnOppositeFront: React.PropTypes.arrayOf(React.PropTypes.number),
+			   sizeOfGearsOnOppositeRear: React.PropTypes.arrayOf(React.PropTypes.number), 
+			   currentNumberOfGearsOppositeFront: React.PropTypes.number,
+			   currentNumberOfGearsOppositeRear: React.PropTypes.number,
+			   selectedGearFront: React.PropTypes.object, 
+			   selectedGearRear: React.PropTypes.object,
+			   handleSelectedGearChange: React.PropTypes.func,
+			   tireSize: React.PropTypes.number,
+			   oppositeTireSize: React.PropTypes.number,
+			   handleTireSizeChange: React.PropTypes.func, 
+			   showRatios: React.PropTypes.bool,
+			   handleShowRatioChange: React.PropTypes.func,
+			   selectedFrontValue: React.PropTypes.number,
+			   selectedRearValue: React.PropTypes.number,
+	},
 	render: function () {
 		return (
 		<div className="left-container">
@@ -40,7 +61,9 @@ var LeftContainer = React.createClass({
 				   		oppositeTireSize = {this.props.oppositeTireSize}
 				   		showRatios = {this.props.showRatios}
 				   		handleShowRatioChange = {this.props.handleShowRatioChange}
-				   		side = "Left" />
+				   		side = "Left"
+				   		selectedFrontValue = {this.props.selectedFrontValue}
+				   		selectedRearValue = {this.props.selectedRearValue} />
 
 		</div>
 		)

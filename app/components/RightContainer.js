@@ -16,7 +16,6 @@ var RightContainer = React.createClass({
 		var ratio = null;
 		var leftRatio = this.props.showRatios ? leftFront / leftRear : leftFront / leftRear * oppositeTireSize;
 		var limitValue = this.props.showRatios ? .1 : 1;
-		//STILL STUCK TRYING TO FIGURE OUT HOW TO HIGHLIGHT GEARS
 		
 		for (i = 0; i < this.props.currentNumberOfGearsFront; i++) {
 			for(j = 0; j < this.props.currentNumberOfGearsRear; j++) {
