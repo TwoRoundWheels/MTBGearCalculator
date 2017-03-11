@@ -1,4 +1,11 @@
 var React = require('react');
+var ReactBootstrap = require('react-bootstrap');
+var Label = ReactBootstrap.Label;
+var Radio = ReactBootstrap.Radio;
+var FormGroup = ReactBootstrap.FormGroup;
+var FormControl = ReactBootstrap.FormControl;
+var ControlLabel = ReactBootstrap.ControlLabel
+console.log(typeof(FormControl));
 
 var GearSelectionForm = React.createClass({
 	handleTextChange: function (e) {
@@ -23,16 +30,15 @@ var GearSelectionForm = React.createClass({
 	render: function() {
 		var textInputs = [];
 		var radioButtons = [];
+
 		for (var i = 0; i < this.props.defaultGears.length; i++) {
 			radioButtons.push(
-					<label key={i}>
-						<input key={i} 
-							   type="radio" 
+					<Radio inline key={i}
 							   name="number-of-gears" 
 							   value={this.props.defaultGears[i]} 
-							   defaultChecked={this.props.defaultGears[i] === this.props.number}/>
+							   defaultChecked={this.props.defaultGears[i] === this.props.number}>
 						{this.props.defaultGears[i]}
-					</label>
+					</Radio>
 				);
 		}; 
 
@@ -43,14 +49,16 @@ var GearSelectionForm = React.createClass({
 		return (
 			<div>
 				<form onChange={this.handleRadioChange}>
-					<label>Number of gears:</label>
-					{radioButtons}
+					<FormGroup>
+						<h4><Label>Number of Gears:</Label></h4>
+						{radioButtons}
+					</FormGroup>
 				</form>
 				<form>
-					<p>
-						Gear Sizes: 
-						<span>{textInputs}</span>
-					</p>
+					<FormGroup>
+					<h4><Label>Gear Sizes: </Label></h4>
+					{textInputs}	
+					</FormGroup>
 				</form>
 			</div>
 			);

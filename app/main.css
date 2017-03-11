@@ -1,12 +1,17 @@
+input {
+	width: 3em;
+}
+
 .left-container {
-	background-color: red;
+	/*background-color: red;*/
 	width: 50%;
 	left: 0;
 	position: absolute;
+	border-right: 1px solid black;
 }
 
 .right-container {
-	background-color: #eee;
+	/*background-color: #eee;*/
 	width: 50%;
 	right: 0;
 	position: absolute;

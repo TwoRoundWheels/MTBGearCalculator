@@ -1,4 +1,6 @@
 var React = require('react');
+var ReactBootstrap = require('react-bootstrap');
+var Table = ReactBootstrap.Table;
 
 var RatioChart = React.createClass({
 	getInitialState: function () {
@@ -102,12 +104,12 @@ var RatioChart = React.createClass({
 		}
 		return (
 			<div>
-				<table>
+				<Table bordered condensed>
 					<tbody>
 						<tr>{columnHeadings()}</tr>
 						{ratioCollection}
 					</tbody>
-				</table>
+				</Table>
 				<form>
 					<label>
 						Highlight range of other side: On
