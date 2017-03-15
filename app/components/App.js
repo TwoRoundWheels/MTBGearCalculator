@@ -1,6 +1,7 @@
 var React = require('react');
 var LeftContainer = require('../components/LeftContainer');
 var RightContainer = require('../components/RightContainer');
+var Banner = require('../components/Banner');
 var Update = require('React-addons-update');
 
 
@@ -118,7 +119,7 @@ var App = React.createClass({
 	},
 	render: function () {
 		return (
-		<div>	
+		<div>		
 			<LeftContainer sizeOfGearsFront = {this.state.left.sizeOfGearsFront}
 				   currentNumberOfGearsFront = {this.state.left.currentNumberOfGearsFront}
 				   sizeOfGearsRear = {this.state.left.sizeOfGearsRear}

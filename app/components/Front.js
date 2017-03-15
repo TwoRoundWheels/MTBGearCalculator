@@ -49,7 +49,7 @@ var Front = React.createClass({
 		}, this);
 		
 		return (
-			<div>
+			<div className="front-container">
 				<GearSelectionForm 
 					radioChange={this.props.handleRadioChange} 
 					textChange={this.props.handleTextChange} 
@@ -58,7 +58,7 @@ var Front = React.createClass({
 					defaultGears={this.defaultProps.defaultGearNumbers}
 					position={this.props.position}
 					side={this.props.side} />
-				<ul className="gears">
+				<ul className="gears text-center">
 					{gears}
 				</ul>
 			</div>

@@ -2,20 +2,49 @@ input {
 	width: 3em;
 }
 
+body {
+	background-image: url("/Images/fun.jpeg");
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.banner {
+	width: 100%;
+	max-height: 200px;
+}
+
 .left-container {
-	/*background-color: red;*/
-	width: 50%;
-	left: 0;
-	position: absolute;
-	border-right: 1px solid black;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 10px;
+	padding: 5px;
+	background-color: rgba(0, 0, 0, .6);
 }
 
 .right-container {
-	/*background-color: #eee;*/
-	width: 50%;
-	right: 0;
-	position: absolute;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 10px;
+	padding: 5px;
+	background-color: rgba(255, 255, 255, .1);
 }
+
+/*.front-container {
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 10px;
+	padding: 5px;
+	background-color: rgba(255, 255, 255, .2);
+}*/
+
+/*.rear-container {
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 10px;
+	padding: 5px;
+	background-color: rgba(255, 255, 255, .2);
+}*/
 
 .gears {
 	display: block;
@@ -28,6 +57,18 @@ input {
 	width: 10px;
 	margin: 5px;
 	background-color: grey;
+}
+
+.gear-selection-form {
+	background-color: rgba(128, 199, 255, .1);
+	padding: 5px;
+	border-radius: 5px;
+	margin: 5px 0 5px 0;
+}
+
+.label {
+	background-color: rgba(0, 51, 77, .7);
+	text-align: center;
 }
 
 .sharedRatio {
@@ -66,21 +107,21 @@ input {
 	opacity: .3;
 }
 
-.tire {
+/*.tire {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 5px;
 	width: 10px;
 	height: 200px;
 	background-color: black;
-}
+}*/
 
-.tire-container {
+/*.tire-container {
 	position: absolute;
 	right: 20%;
 	bottom: 40%;
-}
+}*/
 
-.tire-form {
+/*.tire-form {
 	background-color: blue;
-}
+}*/

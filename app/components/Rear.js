@@ -1,4 +1,5 @@
 var React = require('react');
+var Label = require('react-bootstrap').Label;
 var GearSelectionForm = require('../components/GearSelectionForm');
 
 var Rear = React.createClass({
@@ -33,7 +34,7 @@ var Rear = React.createClass({
 	},
 	render: function() {
 		var HEIGHTMODIFIER = 5;
-		var TIREHEIGHTMODIFIER = 10;
+		// var TIREHEIGHTMODIFIER = 10;
 		var gearsToHighlight = this.props.gearsToHighlight;
 		var side = this.props.side;
 		var numberOfGears = this.props.currentNumberOfGears;
@@ -53,27 +54,22 @@ var Rear = React.createClass({
 			}
 		}, this);	
 		return (
-			<div>
-				<ul className="gears">
+			<div className="rear-container">
+				<ul className="gears text-center">
 					{gears}
 				</ul>
-				<div className="tire-container">
-					<div className="tire" style={{height: this.props.tireSize * TIREHEIGHTMODIFIER}}>
-						
-					</div>
-					<form className="tire-form" onChange={this.handleRadioChange} >
-						<label>Tire Size: </label>
-							<label>26
-								<input type="radio" name="tire-size" value={26} defaultChecked={true}/>
-							</label>
-							<label>27.5
-								<input type="radio" name="tire-size" value={27.5} defaultChecked={false}/>
-							</label>
-							<label>29
-								<input type="radio" name="tire-size" value={29} defaultChecked={false}/>
-							</label>	
-						</form>
-				</div>
+				<form className="gear-selection-form pull-right" onChange={this.handleRadioChange} >
+					<h4><Label>Tire Size: </Label></h4>
+						<label>26
+							<input type="radio" name="tire-size" value={26} defaultChecked={true}/>
+						</label>
+						<label>27.5
+							<input type="radio" name="tire-size" value={27.5} defaultChecked={false}/>
+						</label>
+						<label>29
+							<input type="radio" name="tire-size" value={29} defaultChecked={false}/>
+						</label>	
+				</form>
 				<GearSelectionForm 
 					radioChange={this.props.handleRadioChange} 
 					textChange={this.props.handleTextChange} 

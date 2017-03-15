@@ -1,6 +1,9 @@
 var React = require('react');
-var ReactBootstrap = require('react-bootstrap');
-var Table = ReactBootstrap.Table;
+var Label = require('react-bootstrap').Label;
+var Table = require('react-bootstrap').Table;
+var Form = require('react-bootstrap').Form;
+var Radio = require('react-bootstrap').Radio;
+
 
 var RatioChart = React.createClass({
 	getInitialState: function () {
@@ -110,42 +113,40 @@ var RatioChart = React.createClass({
 						{ratioCollection}
 					</tbody>
 				</Table>
-				<form>
-					<label>
-						Highlight range of other side: On
-						<input type="radio" 
-							   name="highlight" 
-							   value={true} 
-							   defaultChecked={true}
-							   onClick={this.handleClick} />
-					</label>
-					<label>
-						Off
-						<input type="radio" 
-							   name="highlight" 
-							   value={false} 
-							   defaultChecked={false}
-							   onClick={this.handleClick} />
-					</label>		
-				</form>
-				<form>
-					<label>
-						Show Gear Ratios
-						<input type="radio" 
-							   name="show-ratios" 
+				<Form inline>
+					<h4>
+					<Label>Highlight range of other side:</Label>
+					<Label>On</Label>
+					<Radio name="highlight"
+						   value={true}
+						   defaultChecked={true}
+						   onClick={this.handleClick}>
+					</Radio>
+					<Label>Off</Label>
+					<Radio name="highlight"
+						   value={false}
+						   defaultChecked={false}
+						   onClick={this.handleClick}>
+					</Radio>
+					</h4>		
+				</Form>
+				<h4>
+					<Form inline>
+						<Label>Show Gear Ratios</Label>
+						<Radio name="show-ratios" 
 							   value={true} 
 							   checked={this.props.showRatios ? true : false}
-							   onChange={this.handleClick} />
-					</label>
-					<label>
-						Show Gear Inches
-						<input type="radio" 
-							   name="show-ratios" 
+							   onChange={this.handleClick}>
+						</Radio>
+					
+						<Label>Show Gear Inches</Label>
+						<Radio name="show-ratios" 
 							   value={false} 
 							   checked={this.props.showRatios ? false : true}
-							   onChange={this.handleClick} />
-					</label>		
-				</form>
+							   onChange={this.handleClick}>
+						</Radio>
+					</Form>
+				</h4>
 			</div>
 			)
 	}

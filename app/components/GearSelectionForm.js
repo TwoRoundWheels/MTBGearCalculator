@@ -4,8 +4,7 @@ var Label = ReactBootstrap.Label;
 var Radio = ReactBootstrap.Radio;
 var FormGroup = ReactBootstrap.FormGroup;
 var FormControl = ReactBootstrap.FormControl;
-var ControlLabel = ReactBootstrap.ControlLabel
-console.log(typeof(FormControl));
+var Form = ReactBootstrap.Form;
 
 var GearSelectionForm = React.createClass({
 	handleTextChange: function (e) {
@@ -48,18 +47,16 @@ var GearSelectionForm = React.createClass({
 
 		return (
 			<div>
-				<form onChange={this.handleRadioChange}>
-					<FormGroup>
+				<Form inline>
+					<FormGroup onChange={this.handleRadioChange} className="gear-selection-form">
 						<h4><Label>Number of Gears:</Label></h4>
 						{radioButtons}
 					</FormGroup>
-				</form>
-				<form>
-					<FormGroup>
+					<FormGroup className = {this.props.position === "Front" ? "gear-selection-form pull-right" : className = "gear-selection-form"}>
 					<h4><Label>Gear Sizes: </Label></h4>
 					{textInputs}	
 					</FormGroup>
-				</form>
+				</Form>
 			</div>
 			);
 	}

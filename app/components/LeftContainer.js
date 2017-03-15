@@ -1,7 +1,10 @@
 var React = require('react');
+var ReactBootstrap = require('react-bootstrap');
 var Front = require('../components/Front');
 var Rear  = require('../components/Rear');
 var RatioChart = require('../components/RatioChart');
+var Col = ReactBootstrap.Col;
+
 
 
 var LeftContainer = React.createClass({
@@ -28,6 +31,7 @@ var LeftContainer = React.createClass({
 	},
 	render: function () {
 		return (
+		<Col sm={6} md={6} lg={6}>
 		<div className="left-container">
 			<Front sizeOfGears = {this.props.sizeOfGearsFront}
 				   currentNumberOfGears = {this.props.currentNumberOfGearsFront}
@@ -66,6 +70,7 @@ var LeftContainer = React.createClass({
 				   		selectedRearValue = {this.props.selectedRearValue} />
 
 		</div>
+		</Col>
 		)
 	}
 });
