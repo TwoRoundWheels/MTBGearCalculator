@@ -55,7 +55,7 @@ var RatioChart = React.createClass({
 		var highlight = this.state.highlight;
 		var showRatios = this.props.showRatios;
 		var side = this.props.side;
-		console.log(side + smallestRatioOnOtherSide + "Large: " + largestRatioOnOtherSide)
+	
 		if (side === "Left") {
 			var selectedRatio = this.props.selectedFrontValue / this.props.selectedRearValue;
 		} else {
