@@ -1,6 +1,8 @@
 var React = require('react');
 var Label = require('react-bootstrap').Label;
+var Radio = require('react-bootstrap').Radio;
 var GearSelectionForm = require('../components/GearSelectionForm');
+
 
 var Rear = React.createClass({
 	defaultProps: {
@@ -33,7 +35,7 @@ var Rear = React.createClass({
 		this.props.handleTireSizeChange(side, value);
 	},
 	render: function() {
-		var HEIGHTMODIFIER = 5;
+		var HEIGHTMODIFIER = 3;
 		// var TIREHEIGHTMODIFIER = 10;
 		var gearsToHighlight = this.props.gearsToHighlight;
 		var side = this.props.side;
@@ -49,7 +51,7 @@ var Rear = React.createClass({
 					}
 					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear" onClick={this.handleClick}>{size}</li>
 				} else {
-					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear" onClick={this.handleClick}>{size}</li>
+					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className={side==="Left" ? "gear pointer-on-hover" : "gear"} onClick={this.handleClick}>{size}</li>
 				}	
 			}
 		}, this);	
@@ -60,15 +62,24 @@ var Rear = React.createClass({
 				</ul>
 				<form className="gear-selection-form pull-right" onChange={this.handleRadioChange} >
 					<h4><Label>Tire Size: </Label></h4>
-						<label>26
-							<input type="radio" name="tire-size" value={26} defaultChecked={true}/>
-						</label>
-						<label>27.5
-							<input type="radio" name="tire-size" value={27.5} defaultChecked={false}/>
-						</label>
-						<label>29
-							<input type="radio" name="tire-size" value={29} defaultChecked={false}/>
-						</label>	
+						<Radio inline 
+							   name="tire-size" 
+							   value={26} 
+							   defaultChecked={true}>
+						26
+						</Radio>
+						<Radio inline 
+							   name="tire-size" 
+							   value={27.5} 
+							   defaultChecked={false}>
+						27.5
+						</Radio>
+						<Radio inline 
+							   name="tire-size" 
+							   value={29} 
+							   defaultChecked={false}>
+						29
+						</Radio>
 				</form>
 				<GearSelectionForm 
 					radioChange={this.props.handleRadioChange} 

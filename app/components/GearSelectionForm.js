@@ -49,11 +49,11 @@ var GearSelectionForm = React.createClass({
 			<div>
 				<Form inline>
 					<FormGroup onChange={this.handleRadioChange} className="gear-selection-form">
-						<h4><Label>Number of Gears:</Label></h4>
+						<h4><Label>Number of Gears {this.props.position}:</Label></h4>
 						{radioButtons}
 					</FormGroup>
 					<FormGroup className = {this.props.position === "Front" ? "gear-selection-form pull-right" : className = "gear-selection-form"}>
-					<h4><Label>Gear Sizes: </Label></h4>
+					<h4><Label>Gear Sizes {this.props.position}: </Label></h4>
 					{textInputs}	
 					</FormGroup>
 				</Form>

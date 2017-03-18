@@ -17,13 +17,13 @@ var RightContainer = React.createClass({
 		var gearsToHighlight = [];
 		var ratio = null;
 		var leftRatio = this.props.showRatios ? leftFront / leftRear : leftFront / leftRear * oppositeTireSize;
-		var limitValue = this.props.showRatios ? .1 : 1;
+		var selectedRatioPerTooth = 1 / leftFront;
+		var limitValue = this.props.showRatios ? 2 * selectedRatioPerTooth : 2 * selectedRatioPerTooth * oppositeTireSize;
 		
 		for (i = 0; i < this.props.currentNumberOfGearsFront; i++) {
 			for(j = 0; j < this.props.currentNumberOfGearsRear; j++) {
 				if (this.props.showRatios === true) {
 					ratio = sizeOfGearsFront[i] / sizeOfGearsRear[j];
-
 				} else {
 					ratio = sizeOfGearsFront[i] / sizeOfGearsRear[j] * tireSize;
 				}
@@ -36,7 +36,7 @@ var RightContainer = React.createClass({
 	},
 	render: function () {
 		return (
-		<Col sm={6} md={6} lg={6}>
+		<Col xs={6} sm={6} md={6} lg={6}>
 		<div className="right-container">
 			<Front sizeOfGears = {this.props.sizeOfGearsFront}
 				   currentNumberOfGears = {this.props.currentNumberOfGearsFront}

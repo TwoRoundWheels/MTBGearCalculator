@@ -27,7 +27,7 @@ var Front = React.createClass({
 		}
 	},
 	render: function() {
-		var HEIGHTMODIFIER = 5;
+		var HEIGHTMODIFIER = 3;
 		var numberOfGears = this.props.currentNumberOfGears;
 		var gearsToHighlight = this.props.gearsToHighlight;
 		var side = this.props.side;
@@ -43,7 +43,7 @@ var Front = React.createClass({
 					}
 					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear" onClick={this.handleClick}>{size}</li>
 				} else {
-					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear" onClick={this.handleClick}>{size}</li>
+					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className={side==="Left" ? "gear pointer-on-hover" : "gear"} onClick={this.handleClick}>{size}</li>
 				}	
 			}	
 		}, this);

@@ -31,7 +31,7 @@ var LeftContainer = React.createClass({
 	},
 	render: function () {
 		return (
-		<Col sm={6} md={6} lg={6}>
+		<Col xs={6} sm={6} md={6} lg={6}>
 		<div className="left-container">
 			<Front sizeOfGears = {this.props.sizeOfGearsFront}
 				   currentNumberOfGears = {this.props.currentNumberOfGearsFront}

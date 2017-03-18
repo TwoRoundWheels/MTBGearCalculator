@@ -16,7 +16,7 @@ var App = React.createClass({
 				left:  {sizeOfGearsFront: [22, 32, 44],
 						currentNumberOfGearsFront: 3,
 						sizeOfGearsRear: [50, 42, 36, 32, 28, 24, 21, 18, 16, 14, 12, 10],
-						currentNumberOfGearsRear: 12,
+						currentNumberOfGearsRear: 9,
 						selectedGearFront: null,
 						selectedGearRear: null,
 						selectedGearFrontValue: null,
@@ -26,7 +26,7 @@ var App = React.createClass({
 				right: {sizeOfGearsFront: [22, 32, 44],
 						currentNumberOfGearsFront: 3,
 						sizeOfGearsRear: [50, 42, 36, 32, 28, 24, 21, 18, 16, 14, 12, 10],
-						currentNumberOfGearsRear: 12,
+						currentNumberOfGearsRear: 9,
 						tireSize: 26},
 				showRatios: true
 				}
@@ -119,7 +119,7 @@ var App = React.createClass({
 	},
 	render: function () {
 		return (
-		<div>		
+		<div className="main">		
 			<LeftContainer sizeOfGearsFront = {this.state.left.sizeOfGearsFront}
 				   currentNumberOfGearsFront = {this.state.left.currentNumberOfGearsFront}
 				   sizeOfGearsRear = {this.state.left.sizeOfGearsRear}

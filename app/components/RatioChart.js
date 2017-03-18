@@ -55,11 +55,14 @@ var RatioChart = React.createClass({
 		var highlight = this.state.highlight;
 		var showRatios = this.props.showRatios;
 		var side = this.props.side;
+		console.log(side + smallestRatioOnOtherSide + "Large: " + largestRatioOnOtherSide)
 		if (side === "Left") {
 			var selectedRatio = this.props.selectedFrontValue / this.props.selectedRearValue;
 		} else {
 			var oppositeRatio = this.props.oppositeSelectedFrontValue / this.props.oppositeSelectedRearValue;
+			var selectedRatioPerTooth = 1 / this.props.oppositeSelectedFrontValue;
 		}
+
 		var ratioCollection = this.props.sizeOfGearsFront.map(function(size, index) {
 			var ratios = [];
 			if (index < numberOfGearsFront) {
@@ -72,18 +75,18 @@ var RatioChart = React.createClass({
 						}
 						if (ratio >= smallestRatioOnOtherSide && ratio <= largestRatioOnOtherSide && highlight === true) {
 							ratios[i] = <td key={i} className="sharedRatio">{ratio.toFixed(2)}</td>
-							if (showRatios === true) {
-								if (Math.abs(ratio - oppositeRatio) < .1) {
-									ratios[i] = <td key={i} className="similar-ratio">{ratio.toFixed(2)}</td>
-								}
-							} else {
-								if (Math.abs(ratio - (oppositeRatio * oppositeTireSize)) < 1) {
-									ratios[i] = <td key={i} className="similar-ratio">{ratio.toFixed(2)}</td>
-								}
-							}
 						} else {
 							ratios[i] = <td key={i}>{ratio.toFixed(2)}</td>
 						}
+						if (showRatios === true) {
+							if (Math.abs(ratio - oppositeRatio) < 2 * selectedRatioPerTooth) {
+									ratios[i] = <td key={i} className="similar-ratio">{ratio.toFixed(2)}</td>
+								}
+							} else {
+								if (Math.abs(ratio - (oppositeRatio * oppositeTireSize)) < 2 * selectedRatioPerTooth * oppositeTireSize) {
+									ratios[i] = <td key={i} className="similar-ratio">{ratio.toFixed(2)}</td>
+								}
+							}
 						if (side === "Left") {
 							if (showRatios === true && ratio === selectedRatio) {
 								ratios[i] = <td key={i} className="similar-ratio">{ratio.toFixed(2)}</td>
@@ -106,8 +109,8 @@ var RatioChart = React.createClass({
 			return headings;
 		}
 		return (
-			<div>
-				<Table bordered condensed>
+			<div className="ratio-chart">
+				<Table bordered condensed responsive>
 					<tbody>
 						<tr>{columnHeadings()}</tr>
 						{ratioCollection}
@@ -116,13 +119,13 @@ var RatioChart = React.createClass({
 				<Form inline>
 					<h4>
 					<Label>Highlight range of other side:</Label>
-					<Label>On</Label>
+					<Label className="highlight-radio-label">On</Label>
 					<Radio name="highlight"
 						   value={true}
 						   defaultChecked={true}
 						   onClick={this.handleClick}>
 					</Radio>
-					<Label>Off</Label>
+					<Label className="highlight-radio-label">Off</Label>
 					<Radio name="highlight"
 						   value={false}
 						   defaultChecked={false}
@@ -132,14 +135,14 @@ var RatioChart = React.createClass({
 				</Form>
 				<h4>
 					<Form inline>
-						<Label>Show Gear Ratios</Label>
+						<Label className="ratio-button-label">Show Gear Ratios</Label>
 						<Radio name="show-ratios" 
 							   value={true} 
 							   checked={this.props.showRatios ? true : false}
 							   onChange={this.handleClick}>
 						</Radio>
 					
-						<Label>Show Gear Inches</Label>
+						<Label className="ratio-button-label">Show Gear Inches</Label>
 						<Radio name="show-ratios" 
 							   value={false} 
 							   checked={this.props.showRatios ? false : true}
