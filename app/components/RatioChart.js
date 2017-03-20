@@ -6,6 +6,23 @@ var Radio = require('react-bootstrap').Radio;
 
 
 var RatioChart = React.createClass({
+	propTypes: {
+		numberOfGearsFront: React.PropTypes.number,
+		numberOfGearsRear: React.PropTypes.number,
+		sizeOfGearsFront: React.PropTypes.arrayOf(React.PropTypes.number),
+		sizeOfGearsRear: React.PropTypes.arrayOf(React.PropTypes.number),
+		sizeOfGearsOnOppositeFront: React.PropTypes.arrayOf(React.PropTypes.number),
+   		sizeOfGearsOnOppositeRear: React.PropTypes.arrayOf(React.PropTypes.number),
+   		currentNumberOfGearsOppositeFront: React.PropTypes.number,
+   		currentNumberOfGearsOppositeRear: React.PropTypes.number,
+   		tireSize: React.PropTypes.number,
+   		oppositeTireSize: React.PropTypes.number,
+   		showRatios: React.PropTypes.bool,
+   		handleShowRatioChange: React.PropTypes.func,
+   		side: React.PropTypes.string,
+   		selectedFrontValue: React.PropTypes.number,
+   		selectedRearValue: React.PropTypes.number
+	},
 	getInitialState: function () {
 		return {highlight: true};
 	},

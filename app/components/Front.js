@@ -2,6 +2,17 @@ var React = require('react');
 var GearSelectionForm = require('../components/GearSelectionForm');
 
 var Front = React.createClass({
+	propTypes: {
+		sizeOfGears: React.PropTypes.arrayOf(React.PropTypes.number),
+		currentNumberOfGears: React.PropTypes.number,
+		handleRadioChange: React.PropTypes.func,
+		handleTextChange: React.PropTypes.func,
+		position: React.PropTypes.string,
+		side: React.PropTypes.string,
+		selectedGearFront: React.PropTypes.object,
+		handleSelectedGearChange: React.PropTypes.func,
+		selectedGearInput: React.PropTypes.number
+	},
 	defaultProps: {
 		defaultGearNumbers: [1, 2, 3],
 		similarRatioClasses: ["similar-ratio1", "similar-ratio2", "similar-ratio3", "similar-ratio4"]

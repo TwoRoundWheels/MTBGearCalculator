@@ -7,6 +7,28 @@ var Col = ReactBootstrap.Col;
 
 
 var RightContainer = React.createClass({
+	propTypes: {
+		sizeOfGearsFront: React.PropTypes.arrayOf(React.PropTypes.number),
+		currentNumberOfGearsFront: React.PropTypes.number,
+		sizeOfGearsRear: React.PropTypes.arrayOf(React.PropTypes.number),
+		currentNumberOfGearsRear : React.PropTypes.number,
+		handleRadioChange: React.PropTypes.func,
+		handleTextChange: React.PropTypes.func,
+	    sizeOfGearsOnOppositeFront: React.PropTypes.arrayOf(React.PropTypes.number),
+	    sizeOfGearsOnOppositeRear: React.PropTypes.arrayOf(React.PropTypes.number),
+	    currentNumberOfGearsOppositeFront: React.PropTypes.number,
+	    currentNumberOfGearsOppositeRear: React.PropTypes.number,
+	    selectedGearFront: React.PropTypes.object,
+	    selectedGearRear: React.PropTypes.object,
+	    handleSelectedGearChange: React.PropTypes.func,
+	    tireSize: React.PropTypes.number,
+	    oppositeTireSize: React.PropTypes.number,
+	    handleTireSizeChange: React.PropTypes.func,
+	    showRatios: React.PropTypes.bool,
+	    handleShowRatioChange: React.PropTypes.func,
+	    oppositeSelectedFrontValue: React.PropTypes.number,
+	    oppositeSelectedRearValue: React.PropTypes.number
+	},
 	calculateGearsToHighlight: function() {
 		var leftFront = this.props.oppositeSelectedFrontValue;
 		var leftRear = this.props.oppositeSelectedRearValue;

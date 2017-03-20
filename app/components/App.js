@@ -1,7 +1,6 @@
 var React = require('react');
 var LeftContainer = require('../components/LeftContainer');
 var RightContainer = require('../components/RightContainer');
-var Banner = require('../components/Banner');
 var Update = require('React-addons-update');
 
 

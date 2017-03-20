@@ -7,6 +7,16 @@ var FormControl = ReactBootstrap.FormControl;
 var Form = ReactBootstrap.Form;
 
 var GearSelectionForm = React.createClass({
+	propTypes: {
+		radioChange: React.PropTypes.func, 
+		textChange: React.PropTypes.func,
+		number: React.PropTypes.number,
+		sizes: React.PropTypes.arrayOf(React.PropTypes.number),
+		defaultGears: React.PropTypes.arrayOf(React.PropTypes.number),
+		position: React.PropTypes.string,
+		side: React.PropTypes.string,
+		selectedGearInput: React.PropTypes.number
+	},
 	handleTextChange: function (e) {
 		var value = Number(e.target.value);
 		if (value >= 0 && value <= 50) {
