@@ -10,11 +10,16 @@ var GearSelectionForm = React.createClass({
 	handleTextChange: function (e) {
 		var value = Number(e.target.value);
 		if (value >= 0 && value <= 50) {
+			if (this.props.side === "Left" && Number(e.target.name) === this.props.selectedGearInput) {
+				var selected = true;
+			} else {
+				var selected = false;
+			}
 			e.target.style.color = "black";
 			var index = Number(e.target.name);
 			var side = this.props.side;
 			var position = this.props.position
-			this.props.textChange(value, index, side, position);
+			this.props.textChange(value, index, side, position, selected);
 		} else {
 			e.target.style.color = "red";
 		}
@@ -53,7 +58,7 @@ var GearSelectionForm = React.createClass({
 						{radioButtons}
 					</FormGroup>
 					<FormGroup className = {this.props.position === "Front" ? "gear-selection-form pull-right" : className = "gear-selection-form"}>
-					<h4><Label>Gear Sizes {this.props.position}: </Label></h4>
+					<h4><Label>Gear Size{this.props.number == 1 ? "" : "s"} {this.props.position}: </Label></h4>
 					{textInputs}	
 					</FormGroup>
 				</Form>

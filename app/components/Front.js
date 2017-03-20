@@ -57,7 +57,9 @@ var Front = React.createClass({
 					sizes={this.props.sizeOfGears}
 					defaultGears={this.defaultProps.defaultGearNumbers}
 					position={this.props.position}
-					side={this.props.side} />
+					side={this.props.side}
+					selectedGear = {this.props.selectedGearFront}
+					selectedGearInput = {this.props.selectedGearInput} />
 				<ul className="gears text-center">
 					{gears}
 				</ul>

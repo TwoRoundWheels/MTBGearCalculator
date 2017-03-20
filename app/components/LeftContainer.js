@@ -28,6 +28,8 @@ var LeftContainer = React.createClass({
 			   handleShowRatioChange: React.PropTypes.func,
 			   selectedFrontValue: React.PropTypes.number,
 			   selectedRearValue: React.PropTypes.number,
+			   selectedGearInputFront: React.PropTypes.number,
+			   selectedGearInputRear: React.PropTypes.number
 	},
 	render: function () {
 		return (
@@ -40,7 +42,8 @@ var LeftContainer = React.createClass({
 				   position = "Front"
 				   side = "Left"
 				   selectedGearFront = {this.props.selectedGearFront}
-				   handleSelectedGearChange = {this.props.handleSelectedGearChange} />
+				   handleSelectedGearChange = {this.props.handleSelectedGearChange}
+				   selectedGearInput = {this.props.selectedGearInputFront} />
 
 			<Rear sizeOfGears = {this.props.sizeOfGearsRear}
 			      currentNumberOfGears = {this.props.currentNumberOfGearsRear}
@@ -51,7 +54,8 @@ var LeftContainer = React.createClass({
 			      selectedGearRear = {this.props.selectedGearRear}
 			      handleSelectedGearChange = {this.props.handleSelectedGearChange}
 			      tireSize = {this.props.tireSize}
-			      handleTireSizeChange = {this.props.handleTireSizeChange} />
+			      handleTireSizeChange = {this.props.handleTireSizeChange}
+			      selectedGearInput = {this.props.selectedGearInputRear} />
 
 			<RatioChart numberOfGearsFront = {this.props.currentNumberOfGearsFront}
 						numberOfGearsRear = {this.props.currentNumberOfGearsRear}

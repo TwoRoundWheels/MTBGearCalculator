@@ -36,7 +36,6 @@ var Rear = React.createClass({
 	},
 	render: function() {
 		var HEIGHTMODIFIER = 3;
-		// var TIREHEIGHTMODIFIER = 10;
 		var gearsToHighlight = this.props.gearsToHighlight;
 		var side = this.props.side;
 		var numberOfGears = this.props.currentNumberOfGears;
@@ -88,7 +87,8 @@ var Rear = React.createClass({
 					sizes={this.props.sizeOfGears}
 					defaultGears={this.defaultProps.defaultGearNumbers}
 					position={this.props.position}
-					side={this.props.side}/>
+					side={this.props.side}
+					selectedGearInput = {this.props.selectedGearInput} />
 			</div>
 			);
 	} 
