@@ -10,12 +10,24 @@ var h1Style = {
 }
 
 var App = React.createClass({
+	defaultSizes: {
+		"1": [32],
+		"2": [26, 36],
+		"3": [22, 32, 42],
+		"7": [28, 24, 21, 18, 16, 14, 12],
+		"8": [32, 28, 24, 21, 18, 15, 13, 11],
+		"9": [36, 32, 30, 28, 26, 24, 22, 18, 16],
+		"10": [36, 32, 30, 28, 26, 24, 22, 20, 18, 16],
+		"11": [42, 36, 32, 28, 25, 22, 19, 17, 15, 13, 11],
+		"12": [50, 42, 36, 32, 28, 24, 21, 18, 16, 14, 12, 10]
+			
+	},
 	getInitialState: function () {
 		return (
 				{
 				left:  {sizeOfGearsFront: [22, 32, 44],
 						currentNumberOfGearsFront: 3,
-						sizeOfGearsRear: [50, 38, 36, 32, 28, 24, 21, 18, 16, 14, 12, 10],
+						sizeOfGearsRear: [36, 32, 30, 28, 26, 24, 22, 18, 16],
 						currentNumberOfGearsRear: 9,
 						selectedGearFront: null,
 						selectedGearRear: null,
@@ -27,7 +39,7 @@ var App = React.createClass({
 
 				right: {sizeOfGearsFront: [22, 32, 44],
 						currentNumberOfGearsFront: 3,
-						sizeOfGearsRear: [50, 42, 36, 32, 28, 24, 21, 18, 16, 14, 12, 10],
+						sizeOfGearsRear: [36, 32, 30, 28, 26, 24, 22, 18, 16],
 						currentNumberOfGearsRear: 9,
 						tireSize: 26},
 				showRatios: true
@@ -80,16 +92,20 @@ var App = React.createClass({
 		//alone would throw an error updating nested objects, or would erase the other object properties
 		//when using setState({left {sizeOfGears: tempArray}}).
 		if (side === "Left" && position === "Front") {
-			var newState = Update(this.state.left, {currentNumberOfGearsFront: {$set: value}});
+			var newState = Update(this.state.left, {currentNumberOfGearsFront: {$set: value},
+													sizeOfGearsFront: {$set: this.defaultSizes[value]}});
 			this.setState({left: newState});
 		} else if (side === "Left" && position === "Rear") {
-			var newState = Update(this.state.left, {currentNumberOfGearsRear: {$set: value}});
+			var newState = Update(this.state.left, {currentNumberOfGearsRear: {$set: value},
+													sizeOfGearsRear: {$set: this.defaultSizes[value]}});
 			this.setState({left: newState});
 		} else if (side === "Right" && position === "Front") {
-			var newState = Update(this.state.right, {currentNumberOfGearsFront: {$set: value}});
+			var newState = Update(this.state.right, {currentNumberOfGearsFront: {$set: value},
+													sizeOfGearsFront: {$set: this.defaultSizes[value]}});
 			this.setState({right: newState});
 		} else if (side === "Right" && position === "Rear") {
-			var newState = Update(this.state.right, {currentNumberOfGearsRear: {$set: value}});
+			var newState = Update(this.state.right, {currentNumberOfGearsRear: {$set: value},
+													sizeOfGearsRear: {$set: this.defaultSizes[value]}});
 			this.setState({right: newState});
 		} else {
 			console.warn("Failed to Update State.");

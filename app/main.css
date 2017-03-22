@@ -16,7 +16,7 @@ body {
 	padding: 0;
 	color: rgba(20, 20, 20, 1);
 	text-align: center;
-	background-color: rgba(0, 0, 0, .3);
+	background-color: rgba(0, 0, 0, .2);
 }
 
 .left-container {
@@ -125,6 +125,7 @@ body {
 }
 
 .ratio-chart {
+	min-height: 229px;
 	background-color: rgba(128, 199, 255, .4);
 	padding: 5px;
 	border-radius: 5px;
