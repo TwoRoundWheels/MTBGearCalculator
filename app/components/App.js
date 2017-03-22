@@ -1,9 +1,10 @@
 var React = require('react');
+var Banner = require('../components/Banner');
 var LeftContainer = require('../components/LeftContainer');
 var RightContainer = require('../components/RightContainer');
 var Update = require('React-addons-update');
-
-
+var Instructions = require('../components/Instructions');
+var Row = require('react-bootstrap').Row;
 var h1Style = {
 	color: "red"
 }
@@ -14,7 +15,7 @@ var App = React.createClass({
 				{
 				left:  {sizeOfGearsFront: [22, 32, 44],
 						currentNumberOfGearsFront: 3,
-						sizeOfGearsRear: [50, 42, 36, 32, 28, 24, 21, 18, 16, 14, 12, 10],
+						sizeOfGearsRear: [50, 38, 36, 32, 28, 24, 21, 18, 16, 14, 12, 10],
 						currentNumberOfGearsRear: 9,
 						selectedGearFront: null,
 						selectedGearRear: null,
@@ -128,50 +129,58 @@ var App = React.createClass({
 	},
 	render: function () {
 		return (
-		<div className="main">		
-			<LeftContainer sizeOfGearsFront = {this.state.left.sizeOfGearsFront}
-				   currentNumberOfGearsFront = {this.state.left.currentNumberOfGearsFront}
-				   sizeOfGearsRear = {this.state.left.sizeOfGearsRear}
-				   currentNumberOfGearsRear = {this.state.left.currentNumberOfGearsRear}
-				   handleRadioChange = {this.handleRadioChange}
-				   handleTextChange = {this.handleTextChange} 
-				   sizeOfGearsOnOppositeFront = {this.state.right.sizeOfGearsFront}
-				   sizeOfGearsOnOppositeRear = {this.state.right.sizeOfGearsRear} 
-				   currentNumberOfGearsOppositeFront = {this.state.right.currentNumberOfGearsFront}
-				   currentNumberOfGearsOppositeRear = {this.state.right.currentNumberOfGearsRear} 
-				   selectedGearFront = {this.state.left.selectedGearFront} 
-				   selectedGearRear = {this.state.left.selectedGearRear}
-				   handleSelectedGearChange = {this.handleSelectedGearChange}
-				   tireSize = {this.state.left.tireSize}
-				   oppositeTireSize = {this.state.right.tireSize}
-				   handleTireSizeChange = {this.handleTireSizeChange} 
-				   showRatios = {this.state.showRatios}
-				   handleShowRatioChange = {this.handleShowRatioChange}
-				   selectedFrontValue = {this.state.left.selectedGearFrontValue}
-				   selectedRearValue = {this.state.left.selectedGearRearValue}
-				   selectedGearInputFront = {this.state.left.selectedGearInputFront}
-				   selectedGearInputRear = {this.state.left.selectedGearInputRear} />
-			
-			<RightContainer sizeOfGearsFront = {this.state.right.sizeOfGearsFront}
-				   currentNumberOfGearsFront = {this.state.right.currentNumberOfGearsFront}
-				   sizeOfGearsRear = {this.state.right.sizeOfGearsRear}
-				   currentNumberOfGearsRear = {this.state.right.currentNumberOfGearsRear}
-				   handleRadioChange = {this.handleRadioChange}
-				   handleTextChange = {this.handleTextChange} 
-				   sizeOfGearsOnOppositeFront = {this.state.left.sizeOfGearsFront}
-				   sizeOfGearsOnOppositeRear = {this.state.left.sizeOfGearsRear}
-				   currentNumberOfGearsOppositeFront = {this.state.left.currentNumberOfGearsFront}
-				   currentNumberOfGearsOppositeRear = {this.state.left.currentNumberOfGearsRear}
-				   selectedGearFront = {this.state.right.selectedGearFront} 
-				   selectedGearRear = {this.state.right.selectedGearRear}
-				   handleSelectedGearChange = {this.handleSelectedGearChange}
-				   tireSize = {this.state.right.tireSize}
-				   oppositeTireSize = {this.state.left.tireSize}
-				   handleTireSizeChange = {this.handleTireSizeChange}
-				   showRatios = {this.state.showRatios}
-				   handleShowRatioChange = {this.handleShowRatioChange}
-				   oppositeSelectedFrontValue = {this.state.left.selectedGearFrontValue}
-				   oppositeSelectedRearValue = {this.state.left.selectedGearRearValue} />
+		<div>
+			<Row>
+				<Banner />
+			</Row>
+			<Row>
+				<Instructions />
+			</Row>
+			<Row>		
+				<LeftContainer sizeOfGearsFront = {this.state.left.sizeOfGearsFront}
+					   currentNumberOfGearsFront = {this.state.left.currentNumberOfGearsFront}
+					   sizeOfGearsRear = {this.state.left.sizeOfGearsRear}
+					   currentNumberOfGearsRear = {this.state.left.currentNumberOfGearsRear}
+					   handleRadioChange = {this.handleRadioChange}
+					   handleTextChange = {this.handleTextChange} 
+					   sizeOfGearsOnOppositeFront = {this.state.right.sizeOfGearsFront}
+					   sizeOfGearsOnOppositeRear = {this.state.right.sizeOfGearsRear} 
+					   currentNumberOfGearsOppositeFront = {this.state.right.currentNumberOfGearsFront}
+					   currentNumberOfGearsOppositeRear = {this.state.right.currentNumberOfGearsRear} 
+					   selectedGearFront = {this.state.left.selectedGearFront} 
+					   selectedGearRear = {this.state.left.selectedGearRear}
+					   handleSelectedGearChange = {this.handleSelectedGearChange}
+					   tireSize = {this.state.left.tireSize}
+					   oppositeTireSize = {this.state.right.tireSize}
+					   handleTireSizeChange = {this.handleTireSizeChange} 
+					   showRatios = {this.state.showRatios}
+					   handleShowRatioChange = {this.handleShowRatioChange}
+					   selectedFrontValue = {this.state.left.selectedGearFrontValue}
+					   selectedRearValue = {this.state.left.selectedGearRearValue}
+					   selectedGearInputFront = {this.state.left.selectedGearInputFront}
+					   selectedGearInputRear = {this.state.left.selectedGearInputRear} />
+				
+				<RightContainer sizeOfGearsFront = {this.state.right.sizeOfGearsFront}
+					   currentNumberOfGearsFront = {this.state.right.currentNumberOfGearsFront}
+					   sizeOfGearsRear = {this.state.right.sizeOfGearsRear}
+					   currentNumberOfGearsRear = {this.state.right.currentNumberOfGearsRear}
+					   handleRadioChange = {this.handleRadioChange}
+					   handleTextChange = {this.handleTextChange} 
+					   sizeOfGearsOnOppositeFront = {this.state.left.sizeOfGearsFront}
+					   sizeOfGearsOnOppositeRear = {this.state.left.sizeOfGearsRear}
+					   currentNumberOfGearsOppositeFront = {this.state.left.currentNumberOfGearsFront}
+					   currentNumberOfGearsOppositeRear = {this.state.left.currentNumberOfGearsRear}
+					   selectedGearFront = {this.state.right.selectedGearFront} 
+					   selectedGearRear = {this.state.right.selectedGearRear}
+					   handleSelectedGearChange = {this.handleSelectedGearChange}
+					   tireSize = {this.state.right.tireSize}
+					   oppositeTireSize = {this.state.left.tireSize}
+					   handleTireSizeChange = {this.handleTireSizeChange}
+					   showRatios = {this.state.showRatios}
+					   handleShowRatioChange = {this.handleShowRatioChange}
+					   oppositeSelectedFrontValue = {this.state.left.selectedGearFrontValue}
+					   oppositeSelectedRearValue = {this.state.left.selectedGearRearValue} />
+				</Row>
 		</div>
 		);
 	}

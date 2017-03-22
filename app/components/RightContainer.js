@@ -1,9 +1,8 @@
 var React = require('react');
-var ReactBootstrap = require('react-bootstrap');
 var Front = require('../components/Front');
 var Rear  = require('../components/Rear');
 var RatioChart = require('../components/RatioChart');
-var Col = ReactBootstrap.Col;
+var Col = require('react-bootstrap').Col;
 
 
 var RightContainer = React.createClass({

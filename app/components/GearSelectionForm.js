@@ -1,10 +1,9 @@
 var React = require('react');
-var ReactBootstrap = require('react-bootstrap');
-var Label = ReactBootstrap.Label;
-var Radio = ReactBootstrap.Radio;
-var FormGroup = ReactBootstrap.FormGroup;
-var FormControl = ReactBootstrap.FormControl;
-var Form = ReactBootstrap.Form;
+var Label = require('react-bootstrap').Label;
+var Radio = require('react-bootstrap').Radio;
+var FormGroup = require('react-bootstrap').FormGroup;
+var FormControl = require('react-bootstrap').FormControl;
+var Form = require('react-bootstrap').Form;
 
 var GearSelectionForm = React.createClass({
 	propTypes: {
