@@ -59,6 +59,7 @@ body {
 	margin-bottom: 0;
 	padding-top: 0;
 	padding-bottom: 0;
+	clear: both;
 }
 
 .pointer-on-hover {
@@ -68,13 +69,13 @@ body {
 .gear {
 	display: inline-block;
 	height: 50px;
-	width: 12px;
-	margin: 5px;
-	background-color: grey;
+	width: 14px;
+	margin: 3px;
 	font-size: .8em;
-	margin-left: 1px;
-	margin-right: 1px;
 	vertical-align: middle;
+	border: 1px solid rgba(20, 20, 20, 1);
+	background: radial-gradient(circle at 50% 50%, rgba(20, 20, 20, .6), rgba(242, 242, 242, .9));
+	border-radius: 3px;
 }
 
 .gear-selection-form {
@@ -132,40 +133,41 @@ body {
 	margin: 5px 0 5px 0;
 }
 
-.sharedRatio {
+.shared-ratio {
 	background-color: rgba(0, 145, 255, .7);
 }
 
 .selectedGear {
-	background-color: green;
+	background-color: rgba(4, 193, 50, 1);
 }
 
-.similar-ratio {
-	background-color: blue;
+.selected-ratio {
+	background-color: rgba(4, 193, 50, 1);
 }
 
 .similar-ratio1 {
-	background-color: yellow;
+	background-color: rgba(93, 255, 60, 1);
+	color: black;
 }
 
 .similar-ratio2 {
 	background-color: yellow;
-	opacity: .8;
+	color: black;
 }
 
 .similar-ratio3 {
-	background-color: yellow;
-	opacity: .6;
+	background-color: rgba(128, 50, 123, 1);
+	color: black;
 }
 
 .similar-ratio4 {
-	background-color: yellow;
-	opacity: .4;
+	background-color: orange;
+	color: black;
 }
 
 .similar-ratio5 {
-	background-color: yellow;
-	opacity: .3;
+	background-color: red;
+	color: black;
 }
 
 /*.tire {

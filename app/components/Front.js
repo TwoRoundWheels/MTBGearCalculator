@@ -1,5 +1,7 @@
 var React = require('react');
 var GearSelectionForm = require('../components/GearSelectionForm');
+var Collapse = require('react-bootstrap').Collapse;
+var Button = require('react-bootstrap').Button;
 
 var Front = React.createClass({
 	propTypes: {
@@ -15,7 +17,7 @@ var Front = React.createClass({
 	},
 	defaultProps: {
 		defaultGearNumbers: [1, 2, 3],
-		similarRatioClasses: ["similar-ratio1", "similar-ratio2", "similar-ratio3", "similar-ratio4"]
+		similarRatioClasses: ["similar-ratio1", "similar-ratio2", "similar-ratio3", "similar-ratio4", "similar-ratio5"]
 	},
 	handleClick: function (e) {
 		var side = this.props.side;

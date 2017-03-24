@@ -23,6 +23,9 @@ var RatioChart = React.createClass({
    		selectedFrontValue: React.PropTypes.number,
    		selectedRearValue: React.PropTypes.number
 	},
+	defaultProps: {
+		similarRatioClasses: ['similar-ratio1', 'similar-ratio2', 'similar-ratio3', 'similar-ratio4', 'similar-ratio5'] 
+	},
 	getInitialState: function () {
 		return {highlight: true};
 	},
@@ -72,6 +75,8 @@ var RatioChart = React.createClass({
 		var highlight = this.state.highlight;
 		var showRatios = this.props.showRatios;
 		var side = this.props.side;
+		var classes = this.defaultProps.similarRatioClasses;
+		var similarCount = 0;
 	
 		if (side === "Left") {
 			var selectedRatio = this.props.selectedFrontValue / this.props.selectedRearValue;
@@ -91,24 +96,26 @@ var RatioChart = React.createClass({
 							var ratio = size / gears[i] * tireSize;
 						}
 						if (ratio >= smallestRatioOnOtherSide && ratio <= largestRatioOnOtherSide && highlight === true) {
-							ratios[i] = <td key={i} className="sharedRatio">{ratio.toFixed(2)}</td>
+							ratios[i] = <td key={i} className="shared-ratio">{ratio.toFixed(2)}</td>
 						} else {
 							ratios[i] = <td key={i}>{ratio.toFixed(2)}</td>
 						}
 						if (showRatios === true) {
 							if (Math.abs(ratio - oppositeRatio) < 2 * selectedRatioPerTooth) {
-									ratios[i] = <td key={i} className="similar-ratio">{ratio.toFixed(2)}</td>
+									ratios[i] = <td key={i} className={classes[similarCount]}>{ratio.toFixed(2)}</td>
+									similarCount++;
 								}
 							} else {
 								if (Math.abs(ratio - (oppositeRatio * oppositeTireSize)) < 2 * selectedRatioPerTooth * oppositeTireSize) {
-									ratios[i] = <td key={i} className="similar-ratio">{ratio.toFixed(2)}</td>
+									ratios[i] = <td key={i} className={classes[similarCount]}>{ratio.toFixed(2)}</td>
+									similarCount++;
 								}
 							}
 						if (side === "Left") {
 							if (showRatios === true && ratio === selectedRatio) {
-								ratios[i] = <td key={i} className="similar-ratio">{ratio.toFixed(2)}</td>
+								ratios[i] = <td key={i} className="selected-ratio">{ratio.toFixed(2)}</td>
 							} else if (ratio === selectedRatio * tireSize) {
-								ratios[i] = <td key={i} className="similar-ratio">{ratio.toFixed(2)}</td>
+								ratios[i] = <td key={i} className="selected-ratio">{ratio.toFixed(2)}</td>
 							}
 							
 						}
