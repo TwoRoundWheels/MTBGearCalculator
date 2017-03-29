@@ -17,7 +17,8 @@ var Front = React.createClass({
 	},
 	defaultProps: {
 		defaultGearNumbers: [1, 2, 3],
-		similarRatioClasses: ["similar-ratio1", "similar-ratio2", "similar-ratio3", "similar-ratio4", "similar-ratio5"]
+		similarRatioClasses: ['similar-ratio1', 'similar-ratio2', 'similar-ratio3', 'similar-ratio4', 'similar-ratio5'],
+		similarRatioColors: ['rgba(93, 255, 60, .9)', 'rgba(255, 255, 0, .9)', 'rgba(128, 50, 123, .9)', 'rgba(255, 165, 0, .5)', 'rgba(255, 0, 0, .9)']
 	},
 	handleClick: function (e) {
 		var side = this.props.side;
@@ -45,16 +46,39 @@ var Front = React.createClass({
 		var gearsToHighlight = this.props.gearsToHighlight;
 		var side = this.props.side;
 		var classes = this.defaultProps.similarRatioClasses;
-
+		var colors = this.defaultProps.similarRatioColors;
+		var totalCount = 0;
+		//mapping an array which RETURNS A NEW ARRAY
 		var gears = this.props.sizeOfGears.map(function(size, index) {
+			//If the INDEX OF THE ORIGINAL ARRAY IS LESS THAN THE NUMBER OF DISPLAYED GEARS
 			if(index < numberOfGears) {
+				// IF ON THE RIGHT SIDE AND THERE ARE GEARS TO HIGHLIGHT
 				if (side === "Right" && gearsToHighlight.length > 0) {
+					//SET COUNT TO 0, WHICH WLL RESET TO 0 on EVERy increment of index
+					var count = 0;
+					//START OF FOR LOOP CHECKING LASTING THE LENGTH OF GEARSTOHIGHLIGHT ARRAY.
 					for (var i = 0; i < gearsToHighlight.length; i++) {
+						// IF INDEX (0,1,2) =  Gears to hightlight at index 0,1,2
 						if (index === gearsToHighlight[i][0]) {
-							return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className={"gear " + classes[i]} onClick={this.handleClick}>{size}</li>
-						} 
+							//ADD ONE TO COUNT
+							count += 1;
+						} 	
 					}
-					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear" onClick={this.handleClick}>{size}</li>
+					totalCount += count;
+					if (count === 0) {
+						return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className="gear" onClick={this.handleClick}>{size}</li>
+					} else if (count === 1) {
+						return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className={"gear " + classes[totalCount - 1]} onClick={this.handleClick}>{size}</li>	
+					} else {
+						colorIndex = 0;
+						gradientString = "linear-gradient(180deg "
+						for (var i = 0; i < count; i++) {
+							colorIndex += 1;
+							gradientString += ", " + colors[totalCount - colorIndex];
+						}
+						gradientString += ")"
+						return <li key={index} style={{height: size * HEIGHTMODIFIER, background: gradientString, color: "black"}} value={size} className={"gear "} onClick={this.handleClick}>{size}</li>
+					}	
 				} else {
 					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className={side==="Left" ? "gear pointer-on-hover" : "gear"} onClick={this.handleClick}>{size}</li>
 				}	

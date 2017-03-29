@@ -20,7 +20,7 @@ var Rear = React.createClass({
 	},
 	defaultProps: {
 		defaultGearNumbers: [1, 7, 8, 9, 10, 11, 12],
-		similarRatioClasses: ["similar-ratio1", "similar-ratio2", "similar-ratio3", "similar-ratio4"]
+		similarRatioClasses: ["similar-ratio1", "similar-ratio2", "similar-ratio3", "similar-ratio4", "similar-ratio5"]
 	},
 	handleClick: function (e) {
 		var side = this.props.side;

@@ -31,29 +31,33 @@ var RightContainer = React.createClass({
 	calculateGearsToHighlight: function() {
 		var leftFront = this.props.oppositeSelectedFrontValue;
 		var leftRear = this.props.oppositeSelectedRearValue;
-		var sizeOfGearsFront =  this.props.sizeOfGearsFront;
-		var sizeOfGearsRear =  this.props.sizeOfGearsRear;
-		var tireSize = this.props.tireSize;
-		var oppositeTireSize = this.props.oppositeTireSize;
 		var gearsToHighlight = [];
-		var ratio = null;
-		var leftRatio = this.props.showRatios ? leftFront / leftRear : leftFront / leftRear * oppositeTireSize;
-		var selectedRatioPerTooth = 1 / leftFront;
-		var limitValue = this.props.showRatios ? 2 * selectedRatioPerTooth : 2 * selectedRatioPerTooth * oppositeTireSize;
-		
-		for (i = 0; i < this.props.currentNumberOfGearsFront; i++) {
-			for(j = 0; j < this.props.currentNumberOfGearsRear; j++) {
-				if (this.props.showRatios === true) {
-					ratio = sizeOfGearsFront[i] / sizeOfGearsRear[j];
-				} else {
-					ratio = sizeOfGearsFront[i] / sizeOfGearsRear[j] * tireSize;
+		if (leftFront != null && leftRear != null) {
+			var sizeOfGearsFront =  this.props.sizeOfGearsFront;
+			var sizeOfGearsRear =  this.props.sizeOfGearsRear;
+			var tireSize = this.props.tireSize;
+			var oppositeTireSize = this.props.oppositeTireSize;
+			var ratio = null;
+			var leftRatio = this.props.showRatios ? leftFront / leftRear : leftFront / leftRear * oppositeTireSize;
+			var selectedRatioPerTooth = 1 / leftFront;
+			var limitValue = this.props.showRatios ? 2 * selectedRatioPerTooth : 2 * selectedRatioPerTooth * oppositeTireSize;
+			
+			for (i = 0; i < this.props.currentNumberOfGearsFront; i++) {
+				for(j = 0; j < this.props.currentNumberOfGearsRear; j++) {
+					if (this.props.showRatios === true) {
+						ratio = sizeOfGearsFront[i] / sizeOfGearsRear[j];
+					} else {
+						ratio = sizeOfGearsFront[i] / sizeOfGearsRear[j] * tireSize;
+					}
+					if (Math.abs(ratio - leftRatio) < limitValue) {
+						gearsToHighlight.push([i, j]);
+					} 
 				}
-				if (Math.abs(ratio - leftRatio) < limitValue) {
-					gearsToHighlight.push([i, j]);
-				} 
 			}
+			return gearsToHighlight;
+		} else {
+			return gearsToHighlight;
 		}
-		return gearsToHighlight;
 	},
 	render: function () {
 		return (
