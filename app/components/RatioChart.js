@@ -32,18 +32,18 @@ var RatioChart = React.createClass({
 	handleClick: function (e) {
 		if (e.target.name === "highlight") {
 			//Set value to Boolean true/false value, rather than the string true/false value returned by e.target.value
-			value = (e.target.value == 'true');
+			let value = (e.target.value == 'true');
 			this.setState({highlight: value});
 		} else if (e.target.name === "show-ratios") {
 			//Set value to Boolean true/false value, rather than the string true/false value returned by e.target.value
-			value = (e.target.value == 'true');
+			let value = (e.target.value == 'true');
 			this.props.handleShowRatioChange(value);
 		} else {
 			console.warn("Failed to update state of Ratio Chart radio buttons");
 		}
 	},
 	calculateSmallestRatio: function (oppositeFront, oppositeRear, oppositeTireSize) {
-		var ratio = oppositeFront[0] / oppositeRear[0];
+		let ratio = oppositeFront[0] / oppositeRear[0];
 		if (this.props.showRatios === true) {
 			return ratio;
 		} else {
@@ -51,7 +51,7 @@ var RatioChart = React.createClass({
 		}
 	},
 	calculateLargestRatio: function (oppositeFront, oppositeRear, oppositeTireSize) {
-		var ratio = oppositeFront / oppositeRear;
+		let ratio = oppositeFront / oppositeRear;
 		if (this.props.showRatios === true) {
 			return ratio;
 		} else {
@@ -60,23 +60,23 @@ var RatioChart = React.createClass({
 		
 	},
 	render: function () {
-		var rowLabels = ["First: ", "Second: ", "Third: "];
-		var numberOfGearsFront = this.props.numberOfGearsFront;
-		var numberOfGearsRear = this.props.numberOfGearsRear;
-		var gears = this.props.sizeOfGearsRear;
-		var numberOfGearsFrontOnOtherSide = this.props.currentNumberOfGearsOppositeFront;
-		var numberOfGearsRearOnOtherSide = this.props.currentNumberOfGearsOppositeRear;
-		var oppositeFront = this.props.sizeOfGearsOnOppositeFront;
-		var oppositeRear = this.props.sizeOfGearsOnOppositeRear;
-		var oppositeTireSize = this.props.oppositeTireSize;
-		var tireSize = this.props.tireSize;
-		var smallestRatioOnOtherSide = this.calculateSmallestRatio(oppositeFront, oppositeRear, oppositeTireSize);	
-		var largestRatioOnOtherSide = this.calculateLargestRatio(oppositeFront[numberOfGearsFrontOnOtherSide - 1], oppositeRear[numberOfGearsRearOnOtherSide - 1], oppositeTireSize);
-		var highlight = this.state.highlight;
-		var showRatios = this.props.showRatios;
-		var side = this.props.side;
-		var classes = this.defaultProps.similarRatioClasses;
-		var similarCount = 0;
+		const rowLabels = ["First: ", "Second: ", "Third: "];
+		const numberOfGearsFront = this.props.numberOfGearsFront;
+		const numberOfGearsRear = this.props.numberOfGearsRear;
+		const gears = this.props.sizeOfGearsRear;
+		const numberOfGearsFrontOnOtherSide = this.props.currentNumberOfGearsOppositeFront;
+		const numberOfGearsRearOnOtherSide = this.props.currentNumberOfGearsOppositeRear;
+		const oppositeFront = this.props.sizeOfGearsOnOppositeFront;
+		const oppositeRear = this.props.sizeOfGearsOnOppositeRear;
+		const oppositeTireSize = this.props.oppositeTireSize;
+		const tireSize = this.props.tireSize;
+		const smallestRatioOnOtherSide = this.calculateSmallestRatio(oppositeFront, oppositeRear, oppositeTireSize);	
+		const largestRatioOnOtherSide = this.calculateLargestRatio(oppositeFront[numberOfGearsFrontOnOtherSide - 1], oppositeRear[numberOfGearsRearOnOtherSide - 1], oppositeTireSize);
+		const highlight = this.state.highlight;
+		const showRatios = this.props.showRatios;
+		const side = this.props.side;
+		const classes = this.defaultProps.similarRatioClasses;
+		let similarCount = 0;
 	
 		if (side === "Left") {
 			var selectedRatio = this.props.selectedFrontValue / this.props.selectedRearValue;
@@ -86,9 +86,9 @@ var RatioChart = React.createClass({
 		}
 
 		var ratioCollection = this.props.sizeOfGearsFront.map(function(size, index) {
-			var ratios = [];
+			let ratios = [];
 			if (index < numberOfGearsFront) {
-				for (var i = 0; i < gears.length; i++) {
+				for (let i = 0; i < gears.length; i++) {
 					if (i < numberOfGearsRear) {
 						if (showRatios === true) {
 							var ratio = size / gears[i];
@@ -125,9 +125,9 @@ var RatioChart = React.createClass({
 			}
 		});
 		var columnHeadings = function () {
-			var headings = [];
+			let headings = [];
 			headings[0] = <th key = {0}>Ratios</th>
-			for (var i = 1; i <= numberOfGearsRear; i++) {
+			for (let i = 1; i <= numberOfGearsRear; i++) {
 				headings[i] = <th key={i}>{i}</th>
 			}
 			return headings;

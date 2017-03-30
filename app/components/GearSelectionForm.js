@@ -17,7 +17,7 @@ var GearSelectionForm = React.createClass({
 		selectedGearInput: React.PropTypes.number
 	},
 	handleTextChange: function (e) {
-		var value = Number(e.target.value);
+		let value = Number(e.target.value);
 		if (value >= 0 && value <= 50) {
 			if (this.props.side === "Left" && Number(e.target.name) === this.props.selectedGearInput) {
 				var selected = true;
@@ -25,9 +25,9 @@ var GearSelectionForm = React.createClass({
 				var selected = false;
 			}
 			e.target.style.color = "black";
-			var index = Number(e.target.name);
-			var side = this.props.side;
-			var position = this.props.position
+			const index = Number(e.target.name);
+			const side = this.props.side;
+			const position = this.props.position
 			this.props.textChange(value, index, side, position, selected);
 		} else {
 			e.target.style.color = "red";
@@ -35,16 +35,16 @@ var GearSelectionForm = React.createClass({
 		
 	},
 	handleRadioChange: function (e) {
-		var value = Number(e.target.value);
-		var side = this.props.side;
-		var position = this.props.position;
+		const value = Number(e.target.value);
+		const side = this.props.side;
+		const position = this.props.position;
 		this.props.radioChange(value, side, position);
 	},
 	render: function() {
-		var textInputs = [];
-		var radioButtons = [];
+		let textInputs = [];
+		let radioButtons = [];
 
-		for (var i = 0; i < this.props.defaultGears.length; i++) {
+		for (let i = 0; i < this.props.defaultGears.length; i++) {
 			radioButtons.push(
 					<Radio inline key={i}
 							   name="number-of-gears" 
@@ -55,7 +55,7 @@ var GearSelectionForm = React.createClass({
 				);
 		}; 
 
-		for (var i = 0; i < this.props.number; i++) {
+		for (let i = 0; i < this.props.number; i++) {
 			textInputs.push(<input key={i} name={i} type="number" value={this.props.sizes[i]} onChange={this.handleTextChange} />);
 		};
 

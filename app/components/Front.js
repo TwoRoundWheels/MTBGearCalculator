@@ -21,46 +21,39 @@ var Front = React.createClass({
 		similarRatioColors: ['rgba(93, 255, 60, .9)', 'rgba(255, 255, 0, .9)', 'rgba(128, 50, 123, .9)', 'rgba(255, 165, 0, .5)', 'rgba(255, 0, 0, .9)']
 	},
 	handleClick: function (e) {
-		var side = this.props.side;
-		var position = this.props.position;
+		const side = this.props.side;
+		const position = this.props.position;
 		if (side === "Left") {
 			if (e.target === this.props.selectedGearFront) {
 				e.target.classList.toggle("selectedGear");
-				var selected = null;
+				let selected = null;
 				this.props.handleSelectedGearChange(side, position, selected);
 			} else if (this.props.selectedGearFront === null) {
 				e.target.classList.toggle("selectedGear");
-				var selected = e.target;
+				let selected = e.target;
 				this.props.handleSelectedGearChange(side, position, selected);
 			} else {
 				this.props.selectedGearFront.classList.toggle("selectedGear");
 				e.target.classList.toggle("selectedGear");
-				var selected = e.target;
+				let selected = e.target;
 				this.props.handleSelectedGearChange(side, position, selected);
 			}
 		}
 	},
 	render: function() {
-		var HEIGHTMODIFIER = 3;
-		var numberOfGears = this.props.currentNumberOfGears;
-		var gearsToHighlight = this.props.gearsToHighlight;
-		var side = this.props.side;
-		var classes = this.defaultProps.similarRatioClasses;
-		var colors = this.defaultProps.similarRatioColors;
+		const HEIGHTMODIFIER = 3;
+		const numberOfGears = this.props.currentNumberOfGears;
+		const gearsToHighlight = this.props.gearsToHighlight;
+		const side = this.props.side;
+		const classes = this.defaultProps.similarRatioClasses;
+		const colors = this.defaultProps.similarRatioColors;
 		var totalCount = 0;
-		//mapping an array which RETURNS A NEW ARRAY
 		var gears = this.props.sizeOfGears.map(function(size, index) {
-			//If the INDEX OF THE ORIGINAL ARRAY IS LESS THAN THE NUMBER OF DISPLAYED GEARS
 			if(index < numberOfGears) {
-				// IF ON THE RIGHT SIDE AND THERE ARE GEARS TO HIGHLIGHT
 				if (side === "Right" && gearsToHighlight.length > 0) {
-					//SET COUNT TO 0, WHICH WLL RESET TO 0 on EVERy increment of index
-					var count = 0;
-					//START OF FOR LOOP CHECKING LASTING THE LENGTH OF GEARSTOHIGHLIGHT ARRAY.
-					for (var i = 0; i < gearsToHighlight.length; i++) {
-						// IF INDEX (0,1,2) =  Gears to hightlight at index 0,1,2
+					let count = 0;
+					for (let i = 0; i < gearsToHighlight.length; i++) {
 						if (index === gearsToHighlight[i][0]) {
-							//ADD ONE TO COUNT
 							count += 1;
 						} 	
 					}
@@ -72,7 +65,7 @@ var Front = React.createClass({
 					} else {
 						colorIndex = 0;
 						gradientString = "linear-gradient(180deg "
-						for (var i = 0; i < count; i++) {
+						for (let i = 0; i < count; i++) {
 							colorIndex += 1;
 							gradientString += ", " + colors[totalCount - colorIndex];
 						}

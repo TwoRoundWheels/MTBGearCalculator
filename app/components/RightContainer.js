@@ -29,18 +29,18 @@ var RightContainer = React.createClass({
 	    oppositeSelectedRearValue: React.PropTypes.number
 	},
 	calculateGearsToHighlight: function() {
-		var leftFront = this.props.oppositeSelectedFrontValue;
-		var leftRear = this.props.oppositeSelectedRearValue;
-		var gearsToHighlight = [];
+		const leftFront = this.props.oppositeSelectedFrontValue;
+		const leftRear = this.props.oppositeSelectedRearValue;
+		let gearsToHighlight = [];
 		if (leftFront != null && leftRear != null) {
-			var sizeOfGearsFront =  this.props.sizeOfGearsFront;
-			var sizeOfGearsRear =  this.props.sizeOfGearsRear;
-			var tireSize = this.props.tireSize;
-			var oppositeTireSize = this.props.oppositeTireSize;
-			var ratio = null;
-			var leftRatio = this.props.showRatios ? leftFront / leftRear : leftFront / leftRear * oppositeTireSize;
-			var selectedRatioPerTooth = 1 / leftFront;
-			var limitValue = this.props.showRatios ? 2 * selectedRatioPerTooth : 2 * selectedRatioPerTooth * oppositeTireSize;
+			const sizeOfGearsFront =  this.props.sizeOfGearsFront;
+			const sizeOfGearsRear =  this.props.sizeOfGearsRear;
+			const tireSize = this.props.tireSize;
+			const oppositeTireSize = this.props.oppositeTireSize;
+			const leftRatio = this.props.showRatios ? leftFront / leftRear : leftFront / leftRear * oppositeTireSize;
+			const selectedRatioPerTooth = 1 / leftFront;
+			const limitValue = this.props.showRatios ? 2 * selectedRatioPerTooth : 2 * selectedRatioPerTooth * oppositeTireSize;
+			let ratio = null;
 			
 			for (i = 0; i < this.props.currentNumberOfGearsFront; i++) {
 				for(j = 0; j < this.props.currentNumberOfGearsRear; j++) {

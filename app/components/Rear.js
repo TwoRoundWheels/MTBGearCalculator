@@ -23,40 +23,40 @@ var Rear = React.createClass({
 		similarRatioClasses: ["similar-ratio1", "similar-ratio2", "similar-ratio3", "similar-ratio4", "similar-ratio5"]
 	},
 	handleClick: function (e) {
-		var side = this.props.side;
-		var position = this.props.position;
+		const side = this.props.side;
+		const position = this.props.position;
 		if (side === "Left") {
 			if (e.target === this.props.selectedGearRear) {
 				e.target.classList.toggle("selectedGear");
-				var selected = null;
+				let selected = null;
 				this.props.handleSelectedGearChange(side, position, selected);
 			} else if (this.props.selectedGearRear === null) {
 				e.target.classList.toggle("selectedGear");
-				var selected = e.target;
+				let selected = e.target;
 				this.props.handleSelectedGearChange(side, position, selected);
 			} else {
 				this.props.selectedGearRear.classList.toggle("selectedGear");
 				e.target.classList.toggle("selectedGear");
-				var selected = e.target;
+				let selected = e.target;
 				this.props.handleSelectedGearChange(side, position, selected);
 			}
 		}
 	},
 	handleRadioChange: function (e) {
-		var side = this.props.side;
-		var value = Number(e.target.value);
+		const side = this.props.side;
+		const value = Number(e.target.value);
 		this.props.handleTireSizeChange(side, value);
 	},
 	render: function() {
-		var HEIGHTMODIFIER = 3;
-		var gearsToHighlight = this.props.gearsToHighlight;
-		var side = this.props.side;
-		var numberOfGears = this.props.currentNumberOfGears;
-		var classes = this.defaultProps.similarRatioClasses;
+		const HEIGHTMODIFIER = 3;
+		const gearsToHighlight = this.props.gearsToHighlight;
+		const side = this.props.side;
+		const numberOfGears = this.props.currentNumberOfGears;
+		const classes = this.defaultProps.similarRatioClasses;
 		var gears = this.props.sizeOfGears.map(function(size, index) {
 			if (index < numberOfGears) {
 				if (side === "Right" && gearsToHighlight.length > 0) {
-					for (var i = 0; i < gearsToHighlight.length; i++) {
+					for (let i = 0; i < gearsToHighlight.length; i++) {
 						if (index === gearsToHighlight[i][1]) {
 							return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className={"gear " + classes[i]} onClick={this.handleClick}>{size}</li>
 						} 

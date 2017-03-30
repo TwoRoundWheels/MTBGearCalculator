@@ -14,7 +14,7 @@ var Instructions = React.createClass({
 	render: function () {
 		return (
 		<div className="text-center">
-        	<Button className="instructions-btn" onClick={ ()=> this.setState({ open: !this.state.open })}>
+        	<Button className="instructions-btn" onClick={ () => this.setState({open: !this.state.open})}>
           		Instructions <Glyph glyph={this.state.open ? "arrow-up" : "arrow-down"} />
         	</Button>
 	        <Collapse in={this.state.open}>

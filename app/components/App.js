@@ -52,36 +52,36 @@ var App = React.createClass({
 		//alone would throw an error updating nested objects, or would erase the other object properties
 		//when using setState({left {sizeOfGears: tempArray}}).
 		if (side === "Left" && position === "Front") {
-			var tempArray = this.state.left.sizeOfGearsFront.slice();
+			let tempArray = this.state.left.sizeOfGearsFront.slice();
 			tempArray[index] = value;
 			if (selected === true) {
-				var newState = Update(this.state.left, {sizeOfGearsFront: {$set: tempArray},
+				let newState = Update(this.state.left, {sizeOfGearsFront: {$set: tempArray},
 											            selectedGearFrontValue: {$set: value}});
 			 	this.setState({left: newState});
 			} else {
-				var newState = Update(this.state.left, {sizeOfGearsFront: {$set: tempArray}});
+				let newState = Update(this.state.left, {sizeOfGearsFront: {$set: tempArray}});
 			 	this.setState({left: newState});
 			}
 		} else if (side === "Left" && position === "Rear") {
-			var tempArray = this.state.left.sizeOfGearsRear.slice();
+			let tempArray = this.state.left.sizeOfGearsRear.slice();
 			tempArray[index] = value;
 			if (selected === true) {
-				var newState = Update(this.state.left, {sizeOfGearsRear: {$set: tempArray},
+				let newState = Update(this.state.left, {sizeOfGearsRear: {$set: tempArray},
 											            selectedGearRearValue: {$set: value}});
 			 	this.setState({left: newState});
 			} else {
-				var newState = Update(this.state.left, {sizeOfGearsRear: {$set: tempArray}});
+				let newState = Update(this.state.left, {sizeOfGearsRear: {$set: tempArray}});
 				this.setState({left: newState});
 			}
 		} else if (side === "Right" && position === "Front") {
-			var tempArray = this.state.right.sizeOfGearsFront.slice();
+			let tempArray = this.state.right.sizeOfGearsFront.slice();
 			tempArray[index] = value;
-			var newState = Update(this.state.right, {sizeOfGearsFront: {$set: tempArray}});
+			let newState = Update(this.state.right, {sizeOfGearsFront: {$set: tempArray}});
 			this.setState({right: newState});
 		} else if (side === "Right" && position === "Rear") {
-			var tempArray = this.state.right.sizeOfGearsRear.slice();
+			let tempArray = this.state.right.sizeOfGearsRear.slice();
 			tempArray[index] = value;
-			var newState = Update(this.state.right, {sizeOfGearsRear: {$set: tempArray}});
+			let newState = Update(this.state.right, {sizeOfGearsRear: {$set: tempArray}});
 			this.setState({right: newState});
 		} else {
 			console.warn("Failed to Update State.");
@@ -92,19 +92,19 @@ var App = React.createClass({
 		//alone would throw an error updating nested objects, or would erase the other object properties
 		//when using setState({left {sizeOfGears: tempArray}}).
 		if (side === "Left" && position === "Front") {
-			var newState = Update(this.state.left, {currentNumberOfGearsFront: {$set: value},
+			let newState = Update(this.state.left, {currentNumberOfGearsFront: {$set: value},
 													sizeOfGearsFront: {$set: this.defaultSizes[value]}});
 			this.setState({left: newState});
 		} else if (side === "Left" && position === "Rear") {
-			var newState = Update(this.state.left, {currentNumberOfGearsRear: {$set: value},
+			let newState = Update(this.state.left, {currentNumberOfGearsRear: {$set: value},
 													sizeOfGearsRear: {$set: this.defaultSizes[value]}});
 			this.setState({left: newState});
 		} else if (side === "Right" && position === "Front") {
-			var newState = Update(this.state.right, {currentNumberOfGearsFront: {$set: value},
+			let newState = Update(this.state.right, {currentNumberOfGearsFront: {$set: value},
 													sizeOfGearsFront: {$set: this.defaultSizes[value]}});
 			this.setState({right: newState});
 		} else if (side === "Right" && position === "Rear") {
-			var newState = Update(this.state.right, {currentNumberOfGearsRear: {$set: value},
+			let newState = Update(this.state.right, {currentNumberOfGearsRear: {$set: value},
 													sizeOfGearsRear: {$set: this.defaultSizes[value]}});
 			this.setState({right: newState});
 		} else {
@@ -112,16 +112,16 @@ var App = React.createClass({
 		}
 	},
 	handleSelectedGearChange: function (side, position, selected) {
-		var value = selected != null ? selected.value : null
+		let value = selected != null ? selected.value : null
 		if (side === "Left" && position === "Front") {
-			var selectedInput = value != null ? this.state.left.sizeOfGearsFront.indexOf(value) : null;
-			var newState = Update(this.state.left, {selectedGearFront: {$set: selected}, 
+			let selectedInput = value != null ? this.state.left.sizeOfGearsFront.indexOf(value) : null;
+			let newState = Update(this.state.left, {selectedGearFront: {$set: selected}, 
 													selectedGearFrontValue: {$set: value},
 													selectedGearInputFront: {$set: selectedInput}});
 			this.setState({left: newState});
 		} else if (side === "Left" && position ==="Rear") {
-			var selectedInput = value != null ? this.state.left.sizeOfGearsRear.indexOf(value) : null;
-			var newState = Update(this.state.left, {selectedGearRear: {$set: selected},
+			let selectedInput = value != null ? this.state.left.sizeOfGearsRear.indexOf(value) : null;
+			let newState = Update(this.state.left, {selectedGearRear: {$set: selected},
 													selectedGearRearValue: {$set: value},
 													selectedGearInputRear: {$set: selectedInput}});
 			this.setState({left: newState});
@@ -131,10 +131,10 @@ var App = React.createClass({
 	},
 	handleTireSizeChange: function (side, value) {
 		if (side === "Left") {
-			var newState = Update(this.state.left, {tireSize: {$set: value}});
+			let newState = Update(this.state.left, {tireSize: {$set: value}});
 			this.setState({left: newState});
 		} else if (side === "Right") {
-			var newState = Update(this.state.right, {tireSize: {$set: value}});
+			let newState = Update(this.state.right, {tireSize: {$set: value}});
 			this.setState({right: newState});
 		} else {
 			console.warn("Failed to Update State of Tire Size.");
