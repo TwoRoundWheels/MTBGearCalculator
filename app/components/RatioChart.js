@@ -100,12 +100,12 @@ var RatioChart = React.createClass({
 						} else {
 							ratios[i] = <td key={i}>{ratio.toFixed(2)}</td>
 						}
-						if (showRatios === true) {
+						if (showRatios === true && oppositeRatio > 0) {
 							if (Math.abs(ratio - oppositeRatio) < 2 * selectedRatioPerTooth) {
 									ratios[i] = <td key={i} className={classes[similarCount]}>{ratio.toFixed(2)}</td>
 									similarCount++;
 								}
-							} else {
+							} else if (oppositeRatio > 0) {
 								if (Math.abs(ratio - (oppositeRatio * oppositeTireSize)) < 2 * selectedRatioPerTooth * oppositeTireSize) {
 									ratios[i] = <td key={i} className={classes[similarCount]}>{ratio.toFixed(2)}</td>
 									similarCount++;
