@@ -38,6 +38,9 @@ var GearSelectionForm = React.createClass({
 		const value = Number(e.target.value);
 		const side = this.props.side;
 		const position = this.props.position;
+		if (this.props.side === "Left" & this.props.selectedGear != null) {
+			this.props.selectedGear.classList.toggle("selectedGear");
+		}
 		this.props.radioChange(value, side, position);
 	},
 	render: function() {

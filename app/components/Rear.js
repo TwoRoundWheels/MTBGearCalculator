@@ -101,6 +101,7 @@ var Rear = React.createClass({
 					defaultGears={this.defaultProps.defaultGearNumbers}
 					position={this.props.position}
 					side={this.props.side}
+					selectedGear={this.props.selectedGearRear}
 					selectedGearInput = {this.props.selectedGearInput} />
 			</div>
 			);

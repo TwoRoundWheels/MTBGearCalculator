@@ -56,7 +56,8 @@ var App = React.createClass({
 			tempArray[index] = value;
 			if (selected === true) {
 				let newState = Update(this.state.left, {sizeOfGearsFront: {$set: tempArray},
-											            selectedGearFrontValue: {$set: value}});
+											            selectedGearFrontValue: {$set: value}
+											        	});
 			 	this.setState({left: newState});
 			} else {
 				let newState = Update(this.state.left, {sizeOfGearsFront: {$set: tempArray}});
@@ -67,7 +68,8 @@ var App = React.createClass({
 			tempArray[index] = value;
 			if (selected === true) {
 				let newState = Update(this.state.left, {sizeOfGearsRear: {$set: tempArray},
-											            selectedGearRearValue: {$set: value}});
+											            selectedGearRearValue: {$set: value}
+											        	});
 			 	this.setState({left: newState});
 			} else {
 				let newState = Update(this.state.left, {sizeOfGearsRear: {$set: tempArray}});
@@ -92,20 +94,33 @@ var App = React.createClass({
 		//alone would throw an error updating nested objects, or would erase the other object properties
 		//when using setState({left {sizeOfGears: tempArray}}).
 		if (side === "Left" && position === "Front") {
+			// let newState = Update(this.state.left, {currentNumberOfGearsFront: {$set: value},
+			//  										sizeOfGearsFront: {$set: this.defaultSizes[value]}});
+			
 			let newState = Update(this.state.left, {currentNumberOfGearsFront: {$set: value},
-													sizeOfGearsFront: {$set: this.defaultSizes[value]}});
+			 										sizeOfGearsFront: {$set: this.defaultSizes[value]},
+			 										selectedGearFront: {$set: null},
+			 										selectedGearFrontValue: {$set: null},
+			 										selectedGearInputFront: {$set: null}
+			 										});
 			this.setState({left: newState});
 		} else if (side === "Left" && position === "Rear") {
 			let newState = Update(this.state.left, {currentNumberOfGearsRear: {$set: value},
-													sizeOfGearsRear: {$set: this.defaultSizes[value]}});
+													sizeOfGearsRear: {$set: this.defaultSizes[value]},
+													selectedGearRear: {$set: null},
+													selectedGearRearValue: {$set: null},
+													selectedGearInputRear: {$set: null}
+													});
 			this.setState({left: newState});
 		} else if (side === "Right" && position === "Front") {
 			let newState = Update(this.state.right, {currentNumberOfGearsFront: {$set: value},
-													sizeOfGearsFront: {$set: this.defaultSizes[value]}});
+													sizeOfGearsFront: {$set: this.defaultSizes[value]}
+													});
 			this.setState({right: newState});
 		} else if (side === "Right" && position === "Rear") {
 			let newState = Update(this.state.right, {currentNumberOfGearsRear: {$set: value},
-													sizeOfGearsRear: {$set: this.defaultSizes[value]}});
+													sizeOfGearsRear: {$set: this.defaultSizes[value]}
+													});
 			this.setState({right: newState});
 		} else {
 			console.warn("Failed to Update State.");
@@ -117,13 +132,15 @@ var App = React.createClass({
 			let selectedInput = value != null ? this.state.left.sizeOfGearsFront.indexOf(value) : null;
 			let newState = Update(this.state.left, {selectedGearFront: {$set: selected}, 
 													selectedGearFrontValue: {$set: value},
-													selectedGearInputFront: {$set: selectedInput}});
+													selectedGearInputFront: {$set: selectedInput}
+													});
 			this.setState({left: newState});
 		} else if (side === "Left" && position ==="Rear") {
 			let selectedInput = value != null ? this.state.left.sizeOfGearsRear.indexOf(value) : null;
 			let newState = Update(this.state.left, {selectedGearRear: {$set: selected},
 													selectedGearRearValue: {$set: value},
-													selectedGearInputRear: {$set: selectedInput}});
+													selectedGearInputRear: {$set: selectedInput}
+													});
 			this.setState({left: newState});
 		} else {
 			console.warn("Failed to Update State of Selected Gear.");
