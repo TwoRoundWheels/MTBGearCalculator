@@ -59,7 +59,7 @@ var RatioChart = React.createClass({
 		}
 		
 	},
-	render: function () {
+	calculateAndDisplayRatios: function () {
 		const rowLabels = ["First: ", "Second: ", "Third: "];
 		const numberOfGearsFront = this.props.numberOfGearsFront;
 		const numberOfGearsRear = this.props.numberOfGearsRear;
@@ -124,20 +124,26 @@ var RatioChart = React.createClass({
 				return <tr key={index}><th>{rowLabels[index]}</th>{ratios}</tr>
 			}
 		});
-		var columnHeadings = function () {
-			let headings = [];
-			headings[0] = <th key = {0}>Ratios</th>
-			for (let i = 1; i <= numberOfGearsRear; i++) {
-				headings[i] = <th key={i}>{i}</th>
-			}
-			return headings;
+		return ratioCollection;
+	},
+	calculateAndDisplayColumnHeadings: function () {
+		const numberOfGearsRear = this.props.numberOfGearsRear;
+		const showRatios = this.props.showRatios;
+		let headings = [];
+
+		headings[0] = showRatios ? <th key = {0}>Ratios</th> : <th key = {0}>Gear Inches</th>;
+		for (let i = 1; i <= numberOfGearsRear; i++) {
+			headings[i] = <th key={i}>{i}</th>
 		}
+		return headings;
+	},
+	render: function () {		
 		return (
 			<div className="ratio-chart">
 				<Table bordered condensed responsive>
 					<tbody>
-						<tr>{columnHeadings()}</tr>
-						{ratioCollection}
+						<tr>{this.calculateAndDisplayColumnHeadings()}</tr>
+						{this.calculateAndDisplayRatios()}
 					</tbody>
 				</Table>
 				<Form inline>
