@@ -47,12 +47,13 @@ var Rear = React.createClass({
 		const value = Number(e.target.value);
 		this.props.handleTireSizeChange(side, value);
 	},
-	render: function() {
+	calculateAndDisplayGears: function () {
 		const HEIGHTMODIFIER = 3;
 		const gearsToHighlight = this.props.gearsToHighlight;
 		const side = this.props.side;
 		const numberOfGears = this.props.currentNumberOfGears;
 		const classes = this.defaultProps.similarRatioClasses;
+
 		var gears = this.props.sizeOfGears.map(function(size, index) {
 			if (index < numberOfGears) {
 				if (side === "Right" && gearsToHighlight.length > 0) {
@@ -66,11 +67,14 @@ var Rear = React.createClass({
 					return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className={side==="Left" ? "gear pointer-on-hover" : "gear"} onClick={this.handleClick}>{size}</li>
 				}	
 			}
-		}, this);	
+		}, this);
+		return gears;	
+	},
+	render: function() {
 		return (
 			<div className="rear-container">
 				<ul className="gears text-center">
-					{gears}
+					{this.calculateAndDisplayGears()}
 				</ul>
 				<form className="gear-selection-form pull-right" onChange={this.handleRadioChange} >
 					<h4><Label>Tire Size: </Label></h4>
