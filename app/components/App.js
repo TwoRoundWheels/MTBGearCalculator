@@ -213,7 +213,7 @@ var App = React.createClass({
 					   handleShowRatioChange = {this.handleShowRatioChange}
 					   oppositeSelectedFrontValue = {this.state.left.selectedGearFrontValue}
 					   oppositeSelectedRearValue = {this.state.left.selectedGearRearValue} />
-				</Row>
+			</Row>
 		</div>
 		);
 	}
