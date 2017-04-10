@@ -61,7 +61,7 @@ var RightContainer = React.createClass({
 	},
 	render: function () {
 		return (
-		<Col xs={6} sm={6} md={6} lg={6}>
+		<Col xs={6} sm={6} md={6} lg={5}>
 			<div className="right-container">
 				<Front sizeOfGears = {this.props.sizeOfGearsFront}
 					   currentNumberOfGears = {this.props.currentNumberOfGearsFront}
