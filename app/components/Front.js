@@ -40,7 +40,7 @@ var Front = React.createClass({
 			}
 		}
 	},
-	render: function() {
+	calculateAndDisplayGears: function () {
 		const HEIGHTMODIFIER = 3;
 		const numberOfGears = this.props.currentNumberOfGears;
 		const gearsToHighlight = this.props.gearsToHighlight;
@@ -77,7 +77,9 @@ var Front = React.createClass({
 				}	
 			}	
 		}, this);
-		
+		return gears;
+	},
+	render: function () {
 		return (
 			<div className="front-container">
 				<GearSelectionForm 
@@ -91,7 +93,7 @@ var Front = React.createClass({
 					selectedGear = {this.props.selectedGearFront}
 					selectedGearInput = {this.props.selectedGearInput} />
 				<ul className="gears text-center">
-					{gears}
+					{this.calculateAndDisplayGears()}
 				</ul>
 			</div>
 			);
