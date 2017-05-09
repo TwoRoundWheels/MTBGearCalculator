@@ -62,7 +62,7 @@ var GearSelectionForm = React.createClass({
 		let textInputs = [];
 		
 		for (let i = 0; i < this.props.number; i++) {
-			textInputs.push(<input key={i} name={i} type="number" value={this.props.sizes[i]} onChange={this.handleTextChange} />);
+			textInputs.push(<input key={i} name={i} type="number" className="text-input" value={this.props.sizes[i]} onChange={this.handleTextChange} />);
 		};
 		return textInputs;
 	},

@@ -1,7 +1,3 @@
-input {
-	width: 3em;
-}
-
 body {
 	background-image: url("/Images/fun.jpeg");
 	background-position: center;
@@ -155,3 +151,6 @@ body {
 	color: black;
 }
 
+.text-input {
+	width: 3em;
+}
