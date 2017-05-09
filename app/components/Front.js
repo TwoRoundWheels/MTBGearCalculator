@@ -63,8 +63,8 @@ var Front = React.createClass({
 					} else if (count === 1) {
 						return <li key={index} style={{height: size * HEIGHTMODIFIER}} value={size} className={"gear " + classes[totalCount - 1]} onClick={this.handleClick}>{size}</li>	
 					} else {
-						colorIndex = 0;
-						gradientString = "linear-gradient(180deg "
+						let colorIndex = 0;
+						let gradientString = "linear-gradient(180deg "
 						for (let i = 0; i < count; i++) {
 							colorIndex += 1;
 							gradientString += ", " + colors[totalCount - colorIndex];
