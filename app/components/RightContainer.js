@@ -42,8 +42,8 @@ var RightContainer = React.createClass({
 			const limitValue = this.props.showRatios ? 2 * selectedRatioPerTooth : 2 * selectedRatioPerTooth * oppositeTireSize;
 			let ratio = null;
 			
-			for (i = 0; i < this.props.currentNumberOfGearsFront; i++) {
-				for(j = 0; j < this.props.currentNumberOfGearsRear; j++) {
+			for (let i = 0; i < this.props.currentNumberOfGearsFront; i++) {
+				for(let j = 0; j < this.props.currentNumberOfGearsRear; j++) {
 					if (this.props.showRatios === true) {
 						ratio = sizeOfGearsFront[i] / sizeOfGearsRear[j];
 					} else {
