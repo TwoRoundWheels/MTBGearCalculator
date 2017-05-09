@@ -2,12 +2,10 @@ var React = require('react');
 var Banner = require('../components/Banner');
 var LeftContainer = require('../components/LeftContainer');
 var RightContainer = require('../components/RightContainer');
-var Update = require('React-addons-update');
+var Update = require('react-addons-update');
 var Instructions = require('../components/Instructions');
 var Row = require('react-bootstrap').Row;
-var h1Style = {
-	color: "red"
-}
+
 
 var App = React.createClass({
 	defaultSizes: {
